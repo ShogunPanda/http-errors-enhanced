@@ -69,7 +69,7 @@ Where:
 
 - `status`: A HTTP status code as number or a identifier (like: `NotFound`). If the identifier is not valid or the number outside the validity range (`400 <= status <= 599`), it defaults to 500.
 - `message`: The error message.
-- `properties`: A list of additional properties to attach to the error. With the exception of `message`, `expose` and `headers`, all properties that already exist in the object are ignored.
+- `properties`: A list of additional properties to attach to the error. With the exception of `message`, `stack`, `expose` and `headers`, all properties that already exist in the object are ignored.
 
 The returned instance is a descendant class of `Error` with the following base properties, plus all the other properties specified in the constructor:
 

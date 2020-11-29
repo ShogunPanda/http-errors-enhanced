@@ -41,6 +41,7 @@ export class HttpError extends Error {
     this.error = messagesByCodes[this.status]
     this.errorPhrase = phrasesByCodes[this.status]
     this.headers = properties.headers ?? {}
+    this.stack = properties.stack || this.stack
 
     // Assign serialization properties
     const code = identifierByCodes[this.status] ?? this.status.toString()
@@ -62,6 +63,19 @@ export class HttpError extends Error {
     if (typeof properties === 'object') {
       addAdditionalProperties(this, properties)
     }
+
+    // Configure properties
+    Object.defineProperties(this, {
+      status: { enumerable: false },
+      code: { enumerable: false },
+      errorPhrase: { enumerable: false },
+      headers: { enumerable: false },
+      name: { enumerable: false },
+      isClientError: { enumerable: false },
+      isServerError: { enumerable: false },
+      statusClass: { enumerable: false },
+      expose: { enumerable: false }
+    })
   }
 }
 
