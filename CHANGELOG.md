@@ -1,3 +1,7 @@
+### 2020-11-29 / 0.3.1
+
+- fix: Fixed schemas.
+
 ### 2020-11-29 / 0.3.0
 
 - feat: Correctly configure properties.
