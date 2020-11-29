@@ -1,3 +1,7 @@
+### 2020-11-29 / 0.3.0
+
+- feat: Correctly configure properties.
+
 ### 2020-11-29 / 0.2.0
 
 - fix: Fixed 500 error class name.
