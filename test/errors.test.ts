@@ -31,7 +31,7 @@ import {
   TooManyRequestsError,
   RequestHeaderFieldsTooLargeError,
   UnavailableForLegalReasonsError,
-  InternalServerErrorError,
+  InternalServerError,
   NotImplementedError,
   BadGatewayError,
   ServiceUnavailableError,
@@ -685,22 +685,22 @@ t.test('UnavailableForLegalReasonsError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('InternalServerErrorError', (t: Test) => {
+t.test('InternalServerError', (t: Test) => {
   t.plan(14)
 
-  const error = new InternalServerErrorError('WHATEVER', { key1: 'prop1' })
+  const error = new InternalServerError('WHATEVER', { key1: 'prop1' })
 
-  t.equal(InternalServerErrorError.status, 500)
-  t.equal(InternalServerErrorError.error, 'InternalServerError')
-  t.equal(InternalServerErrorError.message, 'Internal Server Error')
-  t.equal(InternalServerErrorError.phrase, 'Internal server error.')
+  t.equal(InternalServerError.status, 500)
+  t.equal(InternalServerError.error, 'InternalServerError')
+  t.equal(InternalServerError.message, 'Internal Server Error')
+  t.equal(InternalServerError.phrase, 'Internal server error.')
 
   t.equal(error.status, 500)
   t.equal(error.message, 'WHATEVER')
   t.equal(error.error, 'Internal Server Error')
   t.equal(error.errorPhrase, 'Internal server error.')
   t.equal(error.code, 'HTTP_ERROR_INTERNAL_SERVER_ERROR')
-  t.equal(error.name, 'InternalServerErrorError')
+  t.equal(error.name, 'InternalServerError')
   t.false(error.isClientError)
   t.true(error.isServerError)
   t.false(error.expose)

@@ -84,6 +84,7 @@ function main() {
   // Iterate
   for (const [code, message] of Object.entries(STATUS_CODES as Dictionary)) {
     const identifier = (message as string).replace(/[^\w]/g, '')
+    const klass = identifier.replace(/Error$/, '') + 'Error'
     const phrase = upperFirst((message as string).toLowerCase()) + '.'
 
     identifierByCodes[code] = identifier
@@ -97,7 +98,7 @@ function main() {
     if (code.match(/^[45]/)) {
       classes.push(
         `
-          export class ${identifier}Error extends HttpError {
+          export class ${klass} extends HttpError {
             static status: number = ${code}
             static error: string = '${identifier}'
             static message: string = "${message}"
@@ -105,7 +106,7 @@ function main() {
           
             constructor(message?: string | GenericObject, properties?: GenericObject) {
               super(${code}, message, properties)
-              this.name = '${identifier}Error'
+              this.name = '${klass}'
             }
           }
         `
@@ -113,25 +114,25 @@ function main() {
 
       const isClientError = code.startsWith('4')
 
-      errorClasses.push(`${identifier}Error`)
+      errorClasses.push(`${klass}`)
       classesTests.push(
         `
-          t.test('${identifier}Error', (t: Test) => {
+          t.test('${klass}', (t: Test) => {
             t.plan(14)
 
-            const error = new ${identifier}Error('WHATEVER', {key1: 'prop1'})
+            const error = new ${klass}('WHATEVER', {key1: 'prop1'})
 
-            t.equal(${identifier}Error.status, ${code})
-            t.equal(${identifier}Error.error, '${identifier}')
-            t.equal(${identifier}Error.message, "${message}")
-            t.equal(${identifier}Error.phrase, "${phrase}")
+            t.equal(${klass}.status, ${code})
+            t.equal(${klass}.error, '${identifier}')
+            t.equal(${klass}.message, "${message}")
+            t.equal(${klass}.phrase, "${phrase}")
 
             t.equal(error.status, ${code})
             t.equal(error.message, 'WHATEVER')
             t.equal(error.error, "${message}")
             t.equal(error.errorPhrase, "${phrase}")
             t.equal(error.code, "HTTP_ERROR_${errorConstant}")
-            t.equal(error.name, '${identifier}Error')
+            t.equal(error.name, '${klass}')
             t.${isClientError ? 'true' : 'false'}(error.isClientError)
             t.${isClientError ? 'false' : 'true'}(error.isServerError)
             t.${isClientError ? 'true' : 'false'}(error.expose)

@@ -203,7 +203,7 @@ export declare class UnavailableForLegalReasonsError extends HttpError {
     static phrase: string;
     constructor(message?: string | GenericObject, properties?: GenericObject);
 }
-export declare class InternalServerErrorError extends HttpError {
+export declare class InternalServerError extends HttpError {
     static status: number;
     static error: string;
     static message: string;

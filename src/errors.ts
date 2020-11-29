@@ -349,7 +349,7 @@ export class UnavailableForLegalReasonsError extends HttpError {
   }
 }
 
-export class InternalServerErrorError extends HttpError {
+export class InternalServerError extends HttpError {
   static status: number = 500
   static error: string = 'InternalServerError'
   static message: string = 'Internal Server Error'
@@ -357,7 +357,7 @@ export class InternalServerErrorError extends HttpError {
 
   constructor(message?: string | GenericObject, properties?: GenericObject) {
     super(500, message, properties)
-    this.name = 'InternalServerErrorError'
+    this.name = 'InternalServerError'
   }
 }
 
