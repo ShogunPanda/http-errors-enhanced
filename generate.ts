@@ -3,7 +3,7 @@ import { STATUS_CODES } from 'http'
 import { format } from 'prettier'
 import { lowerFirst, upperFirst } from './src/utils'
 
-function buildError(code: number, description: string, error: string, additional: object): string {
+function buildError(code: number, description: string, identifier: string, error: string, additional: object): string {
   const definition = {
     type: 'object',
     $id: `#errors/${code}`,
@@ -23,7 +23,7 @@ function buildError(code: number, description: string, error: string, additional
     additionalProperties: false
   }
 
-  return `export const ${lowerFirst(error)}Schema = ${JSON.stringify(definition)}`
+  return `export const ${lowerFirst(identifier)}Schema = ${JSON.stringify(definition)}`
 }
 
 function main() {
@@ -150,7 +150,7 @@ function main() {
           description = description[0]
         }
 
-        schemas.push(buildError(parseInt(code, 0), description, identifier, additional))
+        schemas.push(buildError(parseInt(code, 0), description, identifier, message as string, additional))
       }
     }
   }

@@ -4,8 +4,8 @@ export const badRequestSchema = {
   description: 'Error returned when the client payload is either invalid, malformed or has logical validation errors.',
   properties: {
     statusCode: { type: 'number', description: 'The error code', enum: [400], example: 400 },
-    error: { type: 'string', description: 'The error title', enum: ['BadRequest'], example: 'BadRequest' },
-    message: { type: 'string', description: 'The error message', pattern: '.+', example: 'BadRequest.' },
+    error: { type: 'string', description: 'The error title', enum: ['Bad Request'], example: 'Bad Request' },
+    message: { type: 'string', description: 'The error message', pattern: '.+', example: 'Bad Request.' },
     errors: {
       type: 'array',
       items: { type: 'object', description: 'A client error detected by the server.', additionalProperties: true }
@@ -52,8 +52,8 @@ export const notFoundSchema = {
   description: 'Error returned when the requested resource is not found.',
   properties: {
     statusCode: { type: 'number', description: 'The error code', enum: [404], example: 404 },
-    error: { type: 'string', description: 'The error title', enum: ['NotFound'], example: 'NotFound' },
-    message: { type: 'string', description: 'The error message', pattern: '.+', example: 'NotFound.' }
+    error: { type: 'string', description: 'The error title', enum: ['Not Found'], example: 'Not Found' },
+    message: { type: 'string', description: 'The error message', pattern: '.+', example: 'Not Found.' }
   },
   required: ['statusCode', 'error', 'message'],
   additionalProperties: false
@@ -65,8 +65,13 @@ export const methodNotAllowedSchema = {
   description: 'Error returned when the requested method resource is not available.',
   properties: {
     statusCode: { type: 'number', description: 'The error code', enum: [405], example: 405 },
-    error: { type: 'string', description: 'The error title', enum: ['MethodNotAllowed'], example: 'MethodNotAllowed' },
-    message: { type: 'string', description: 'The error message', pattern: '.+', example: 'MethodNotAllowed.' }
+    error: {
+      type: 'string',
+      description: 'The error title',
+      enum: ['Method Not Allowed'],
+      example: 'Method Not Allowed'
+    },
+    message: { type: 'string', description: 'The error message', pattern: '.+', example: 'Method Not Allowed.' }
   },
   required: ['statusCode', 'error', 'message'],
   additionalProperties: false
@@ -78,8 +83,8 @@ export const notAcceptableSchema = {
   description: 'Error returned when the server is not able to accept the request.',
   properties: {
     statusCode: { type: 'number', description: 'The error code', enum: [406], example: 406 },
-    error: { type: 'string', description: 'The error title', enum: ['NotAcceptable'], example: 'NotAcceptable' },
-    message: { type: 'string', description: 'The error message', pattern: '.+', example: 'NotAcceptable.' }
+    error: { type: 'string', description: 'The error title', enum: ['Not Acceptable'], example: 'Not Acceptable' },
+    message: { type: 'string', description: 'The error message', pattern: '.+', example: 'Not Acceptable.' }
   },
   required: ['statusCode', 'error', 'message'],
   additionalProperties: false
@@ -107,10 +112,10 @@ export const unsupportedMediaTypeSchema = {
     error: {
       type: 'string',
       description: 'The error title',
-      enum: ['UnsupportedMediaType'],
-      example: 'UnsupportedMediaType'
+      enum: ['Unsupported Media Type'],
+      example: 'Unsupported Media Type'
     },
-    message: { type: 'string', description: 'The error message', pattern: '.+', example: 'UnsupportedMediaType.' }
+    message: { type: 'string', description: 'The error message', pattern: '.+', example: 'Unsupported Media Type.' }
   },
   required: ['statusCode', 'error', 'message'],
   additionalProperties: false
@@ -125,10 +130,10 @@ export const internalServerErrorSchema = {
     error: {
       type: 'string',
       description: 'The error title',
-      enum: ['InternalServerError'],
-      example: 'InternalServerError'
+      enum: ['Internal Server Error'],
+      example: 'Internal Server Error'
     },
-    message: { type: 'string', description: 'The error message', pattern: '.+', example: 'InternalServerError.' },
+    message: { type: 'string', description: 'The error message', pattern: '.+', example: 'Internal Server Error.' },
     stack: { type: 'array', items: { type: 'string', description: 'A call in the error stack.', pattern: '.+' } },
     errors: { type: 'object', description: 'A server error.', additionalProperties: true },
     failedValidations: {
@@ -147,8 +152,8 @@ export const badGatewaySchema = {
   description: 'Error returned when a unexpected error was thrown by a upstream server.',
   properties: {
     statusCode: { type: 'number', description: 'The error code', enum: [502], example: 502 },
-    error: { type: 'string', description: 'The error title', enum: ['BadGateway'], example: 'BadGateway' },
-    message: { type: 'string', description: 'The error message', pattern: '.+', example: 'BadGateway.' }
+    error: { type: 'string', description: 'The error title', enum: ['Bad Gateway'], example: 'Bad Gateway' },
+    message: { type: 'string', description: 'The error message', pattern: '.+', example: 'Bad Gateway.' }
   },
   required: ['statusCode', 'error', 'message'],
   additionalProperties: false
@@ -160,8 +165,8 @@ export const gatewayTimeoutSchema = {
   description: 'Error returned when a upstream server timed out.',
   properties: {
     statusCode: { type: 'number', description: 'The error code', enum: [504], example: 504 },
-    error: { type: 'string', description: 'The error title', enum: ['GatewayTimeout'], example: 'GatewayTimeout' },
-    message: { type: 'string', description: 'The error message', pattern: '.+', example: 'GatewayTimeout.' }
+    error: { type: 'string', description: 'The error title', enum: ['Gateway Timeout'], example: 'Gateway Timeout' },
+    message: { type: 'string', description: 'The error message', pattern: '.+', example: 'Gateway Timeout.' }
   },
   required: ['statusCode', 'error', 'message'],
   additionalProperties: false
