@@ -1,0 +1,55 @@
+{
+  "name": "http-errors-enhanced",
+  "version": "0.1.0",
+  "description": "Create HTTP errors with additional properties for any framework.",
+  "homepage": "https://sw.cowtech.it/http-errors-enhanced",
+  "repository": "github:ShogunPanda/http-errors-enhanced",
+  "keywords": [
+    "http",
+    "errors",
+    "enhanced",
+    "http-errors"
+  ],
+  "bugs": {
+    "url": "https://github.com/ShogunPanda/http-errors-enhanced/issues"
+  },
+  "author": "Shogun <shogun@cowtech.it>",
+  "license": "ISC",
+  "private": false,
+  "files": [
+    "lib",
+    "types",
+    "CHANGELOG.md",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "main": "lib/index.js",
+  "typings": "types/index.d.ts",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "lint": "eslint src/*.ts test/*.ts",
+    "test": "tap --reporter=spec --coverage-report=html --coverage-report=text --no-browser test/*.test.ts",
+    "test:ci": "tap --no-color --reporter=spec --coverage-report=json --coverage-report=text --branches 90 --functions 90 --lines 90 --statements 90 test/*.test.ts",
+    "ci": "yarn lint && yarn test:ci",
+    "prebuild": "rm -rf lib/* types/* && yarn lint",
+    "build": "tsc -p .",
+    "prepublishOnly": "yarn ci",
+    "postpublish": "git push origin && git push origin -f --tags",
+    "generate": "node -r ts-node/register/type-check generate.ts"
+  },
+  "devDependencies": {
+    "@cowtech/eslint-config": "^7.10.1",
+    "@types/http-errors": "^1.8.0",
+    "@types/node": "^14.14.9",
+    "@types/prettier": "^2.1.5",
+    "@types/tap": "^14.10.1",
+    "http-errors": "^1.8.0",
+    "prettier": "^2.2.0",
+    "tap": "^14.11.0",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.1.2"
+  },
+  "engines": {
+    "node": ">=12.15.0"
+  }
+}
