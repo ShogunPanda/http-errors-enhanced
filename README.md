@@ -108,6 +108,10 @@ The function can be used to check if an value is a `HttpError` or it has compati
 
 The function returns `true` if the value is an instance of `HttpError` or if the value is an object with a `status` property which is a number (and it is mirrored by the `statusCode` property) and a `expose` property which is a boolean.
 
+### addAdditionalProperties(target, source)
+
+Copies all enumerable properties from `source` to `target`, skipping the ones which are already defined.
+
 ### serializeError(val)
 
 The function extracts the `message`, `code` (or `name` if no code is present) and `stack` properties from an object (typically a descendant of `Error`).

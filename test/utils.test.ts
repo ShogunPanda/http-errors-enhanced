@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
 import t from 'tap'
-import { serializeError } from '../src'
-import { addAdditionalProperties, lowerFirst, pascalCase, upperFirst } from '../src/utils'
+import { addAdditionalProperties, serializeError } from '../src'
+import { lowerFirst, pascalCase, upperFirst } from '../src/utils'
 
 type Test = typeof t
 
