@@ -70,7 +70,7 @@ export class HttpError extends Error {
     // Configure properties
     Object.defineProperties(this, {
       status: { enumerable: false },
-      code: { enumerable: this.code.startsWith(HttpError.standardErrorPrefix) },
+      code: { enumerable: !this.code.startsWith(HttpError.standardErrorPrefix) },
       errorPhrase: { enumerable: false },
       headers: { enumerable: false },
       name: { enumerable: false },
