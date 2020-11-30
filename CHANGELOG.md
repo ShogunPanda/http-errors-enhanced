@@ -1,3 +1,7 @@
+### 2020-11-30 / 0.4.1
+
+- fix: Use right logic for exposing.
+
 ### 2020-11-30 / 0.4.0
 
 - feat: Improve code property masking.
