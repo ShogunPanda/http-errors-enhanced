@@ -1,3 +1,7 @@
+### 2020-11-30 / 0.4.2
+
+- fix: Fix schemas.
+
 ### 2020-11-30 / 0.4.1
 
 - fix: Use right logic for exposing.
