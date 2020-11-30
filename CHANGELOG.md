@@ -1,3 +1,7 @@
+### 2020-11-30 / 0.3.2
+
+- feat: Output code depending on the expose flag.
+
 ### 2020-11-29 / 0.3.1
 
 - fix: Fixed schemas.
