@@ -1,5 +1,6 @@
 import { GenericObject } from './utils';
 export declare class HttpError extends Error {
+    static standardErrorPrefix: string;
     status: number;
     statusCode: number;
     statusClass: number;

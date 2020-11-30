@@ -69,14 +69,14 @@ Where:
 
 - `status`: A HTTP status code as number or a identifier (like: `NotFound`). If the identifier is not valid or the number outside the validity range (`400 <= status <= 599`), it defaults to 500.
 - `message`: The error message.
-- `properties`: A list of additional properties to attach to the error. With the exception of `message`, `stack`, `expose` and `headers`, all properties that already exist in the object are ignored.
+- `properties`: A list of additional properties to attach to the error. With the exception of `code`, `message`, `stack`, `expose` and `headers`, all properties that already exist in the object are ignored.
 
 The returned instance is a descendant class of `Error` with the following base properties, plus all the other properties specified in the constructor:
 
 - `status`: The HTTP status as number.
 - `statusCode`: It always mirrors `status`. It exists for compatibility reasons.
 - `statusClass`: The HTTP status class, which is its first digit multiplied by 100. For instance, the status class of `404` is `400`.
-- `code`: A string identifier for the error. It always starts with `HTTP_ERROR_`. If the status code is know, it will be a string representation of it, like `HTTP_ERROR_NOT_FOUND`, otherwise it will contain the status number, like `HTTP_ERROR_570`.
+- `code`: A string identifier for the error. If not ovewritten using properties, it always starts with `HTTP_ERROR_` (this prefix is also exported as `HttpError.standardErrorPrefix`). If the status code is know, it will be a string representation of it, like `HTTP_ERROR_NOT_FOUND`, otherwise it will contain the status number, like `HTTP_ERROR_570`.
 - `error`: The HTTP status code description, if found. Example: `Not Found`.
 - `errorPhrase`: The HTTP status code as phrase, if found. Example: `Not found.`.
 - `expose`: A boolean to notify frameworks if errors internals (like message and stack) should be sent to client. Unless overwritten, it is set to `true` for errors whose statusClass is 400.

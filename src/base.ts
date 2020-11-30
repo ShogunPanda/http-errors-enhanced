@@ -2,6 +2,8 @@ import { codesByIdentifier, identifierByCodes, messagesByCodes, phrasesByCodes }
 import { addAdditionalProperties, GenericObject, upperFirst } from './utils'
 
 export class HttpError extends Error {
+  static standardErrorPrefix: string = 'HTTP_ERROR_'
+
   status: number
   statusCode: number // This always mirrors status
   statusClass: number
@@ -44,9 +46,10 @@ export class HttpError extends Error {
     this.stack = properties.stack || this.stack
 
     // Assign serialization properties
-    const code = identifierByCodes[this.status] ?? this.status.toString()
+    const code = identifierByCodes[this.status] || this.status.toString()
     this.name = 'HttpError'
-    this.code = `HTTP_ERROR_${code.replace(/([a-z])([A-Z])/g, '$1_$2').toUpperCase()}`
+    this.code =
+      properties.code || `${HttpError.standardErrorPrefix}${code.replace(/([a-z])([A-Z])/g, '$1_$2').toUpperCase()}`
 
     // Assign helpers properties
     this.isClientError = this.status < 500
@@ -67,7 +70,7 @@ export class HttpError extends Error {
     // Configure properties
     Object.defineProperties(this, {
       status: { enumerable: false },
-      code: { enumerable: this.expose },
+      code: { enumerable: this.code.startsWith(HttpError.standardErrorPrefix) },
       errorPhrase: { enumerable: false },
       headers: { enumerable: false },
       name: { enumerable: false },

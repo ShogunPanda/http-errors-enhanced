@@ -58,11 +58,12 @@ t.test('HttpError', (t: Test) => {
   })
 
   t.test('it should accept multiple invocations styles', (t: Test) => {
-    t.plan(3)
+    t.plan(4)
 
-    const error = new HttpError('NotFound', { message: 'WHATEVER', key1: 'value1' })
+    const error = new HttpError('NotFound', { code: 'CODE', message: 'WHATEVER', key1: 'value1' })
 
     t.equal(error.status, 404)
+    t.equal(error.code, 'CODE')
     t.equal(error.message, 'WHATEVER')
     t.equal(error.key1, 'value1')
   })
