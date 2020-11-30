@@ -9,14 +9,15 @@ function buildError(code: number, description: string, identifier: string, error
     $id: `#errors/${code}`,
     description,
     properties: {
-      statusCode: { type: 'number', description: 'The error code', enum: [code], example: code },
-      error: { type: 'string', description: 'The error title', enum: [error], example: error },
+      statusCode: { type: 'number', description: 'The error HTTP status code', enum: [code], example: code },
+      error: { type: 'string', description: 'The error HTTP status description', enum: [error], example: error },
       message: {
         type: 'string',
         description: 'The error message',
         pattern: '.+',
         example: `${error}.`
       },
+      code: { type: 'string', description: 'The error code', enum: [error], example: error },
       ...additional
     },
     required: ['statusCode', 'error', 'message'],

@@ -21,6 +21,12 @@ export declare const badRequestSchema: {
             pattern: string;
             example: string;
         };
+        code: {
+            type: string;
+            description: string;
+            enum: string[];
+            example: string;
+        };
         errors: {
             type: string;
             items: {
@@ -61,6 +67,12 @@ export declare const unauthorizedSchema: {
             pattern: string;
             example: string;
         };
+        code: {
+            type: string;
+            description: string;
+            enum: string[];
+            example: string;
+        };
     };
     required: string[];
     additionalProperties: boolean;
@@ -86,6 +98,12 @@ export declare const forbiddenSchema: {
             type: string;
             description: string;
             pattern: string;
+            example: string;
+        };
+        code: {
+            type: string;
+            description: string;
+            enum: string[];
             example: string;
         };
     };
@@ -115,6 +133,12 @@ export declare const notFoundSchema: {
             pattern: string;
             example: string;
         };
+        code: {
+            type: string;
+            description: string;
+            enum: string[];
+            example: string;
+        };
     };
     required: string[];
     additionalProperties: boolean;
@@ -140,6 +164,12 @@ export declare const methodNotAllowedSchema: {
             type: string;
             description: string;
             pattern: string;
+            example: string;
+        };
+        code: {
+            type: string;
+            description: string;
+            enum: string[];
             example: string;
         };
     };
@@ -169,6 +199,12 @@ export declare const notAcceptableSchema: {
             pattern: string;
             example: string;
         };
+        code: {
+            type: string;
+            description: string;
+            enum: string[];
+            example: string;
+        };
     };
     required: string[];
     additionalProperties: boolean;
@@ -194,6 +230,12 @@ export declare const conflictSchema: {
             type: string;
             description: string;
             pattern: string;
+            example: string;
+        };
+        code: {
+            type: string;
+            description: string;
+            enum: string[];
             example: string;
         };
     };
@@ -223,6 +265,12 @@ export declare const unsupportedMediaTypeSchema: {
             pattern: string;
             example: string;
         };
+        code: {
+            type: string;
+            description: string;
+            enum: string[];
+            example: string;
+        };
     };
     required: string[];
     additionalProperties: boolean;
@@ -248,6 +296,12 @@ export declare const internalServerErrorSchema: {
             type: string;
             description: string;
             pattern: string;
+            example: string;
+        };
+        code: {
+            type: string;
+            description: string;
+            enum: string[];
             example: string;
         };
         stack: {
@@ -295,6 +349,12 @@ export declare const badGatewaySchema: {
             pattern: string;
             example: string;
         };
+        code: {
+            type: string;
+            description: string;
+            enum: string[];
+            example: string;
+        };
     };
     required: string[];
     additionalProperties: boolean;
@@ -320,6 +380,12 @@ export declare const gatewayTimeoutSchema: {
             type: string;
             description: string;
             pattern: string;
+            example: string;
+        };
+        code: {
+            type: string;
+            description: string;
+            enum: string[];
             example: string;
         };
     };
