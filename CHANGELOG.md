@@ -1,3 +1,7 @@
+### 2020-11-30 / 0.4.0
+
+- feat: Improve code property masking.
+
 ### 2020-11-30 / 0.3.2
 
 - feat: Output code depending on the expose flag.
