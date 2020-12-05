@@ -1,3 +1,7 @@
+### 2020-12-05 / 0.4.3
+
+- fix: Fixed HTTP error JSON schema naming.
+
 ### 2020-11-30 / 0.4.2
 
 - fix: Fix schemas.
