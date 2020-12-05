@@ -6,7 +6,7 @@ import { lowerFirst, upperFirst } from './src/utils'
 function buildError(code: number, description: string, identifier: string, error: string, additional: object): string {
   const definition = {
     type: 'object',
-    $id: `#errors/${code}`,
+    $id: `#http-error-${code}`,
     description,
     properties: {
       statusCode: { type: 'number', description: 'The error HTTP status code', enum: [code], example: code },
