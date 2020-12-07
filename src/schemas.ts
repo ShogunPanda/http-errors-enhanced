@@ -184,7 +184,7 @@ export const internalServerErrorSchema = {
       example: 'Internal Server Error'
     },
     stack: { type: 'array', items: { type: 'string', description: 'A call in the error stack.', pattern: '.+' } },
-    errors: { type: 'object', description: 'A server error.', additionalProperties: true },
+    errors: { type: 'array', items: { type: 'object', description: 'A server error.', additionalProperties: true } },
     failedValidations: {
       type: 'object',
       description: 'The validation errors in the server response.',
@@ -208,7 +208,11 @@ export const badGatewaySchema = {
       example: 'Bad Gateway'
     },
     message: { type: 'string', description: 'The error message', pattern: '.+', example: 'Bad Gateway.' },
-    code: { type: 'string', description: 'The error code', enum: ['Bad Gateway'], example: 'Bad Gateway' }
+    code: { type: 'string', description: 'The error code', enum: ['Bad Gateway'], example: 'Bad Gateway' },
+    errors: {
+      type: 'array',
+      items: { type: 'object', description: 'A upstream server error.', additionalProperties: true }
+    }
   },
   required: ['statusCode', 'error', 'message'],
   additionalProperties: false

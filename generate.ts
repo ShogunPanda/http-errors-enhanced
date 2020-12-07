@@ -59,7 +59,14 @@ function main() {
       'Error returned when a unexpected error was thrown by the server.',
       {
         stack: { type: 'array', items: { type: 'string', description: 'A call in the error stack.', pattern: '.+' } },
-        errors: { type: 'object', description: 'A server error.', additionalProperties: true },
+        errors: {
+          type: 'array',
+          items: {
+            type: 'object',
+            description: 'A server error.',
+            additionalProperties: true
+          }
+        },
         failedValidations: {
           type: 'object',
           description: 'The validation errors in the server response.',
@@ -67,7 +74,19 @@ function main() {
         }
       }
     ],
-    502: 'Error returned when a unexpected error was thrown by a upstream server.',
+    502: [
+      'Error returned when a unexpected error was thrown by a upstream server.',
+      {
+        errors: {
+          type: 'array',
+          items: {
+            type: 'object',
+            description: 'A upstream server error.',
+            additionalProperties: true
+          }
+        }
+      }
+    ],
     504: 'Error returned when a upstream server timed out.'
   }
 

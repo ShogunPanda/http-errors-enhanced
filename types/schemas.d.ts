@@ -314,8 +314,11 @@ export declare const internalServerErrorSchema: {
         };
         errors: {
             type: string;
-            description: string;
-            additionalProperties: boolean;
+            items: {
+                type: string;
+                description: string;
+                additionalProperties: boolean;
+            };
         };
         failedValidations: {
             type: string;
@@ -354,6 +357,14 @@ export declare const badGatewaySchema: {
             description: string;
             enum: string[];
             example: string;
+        };
+        errors: {
+            type: string;
+            items: {
+                type: string;
+                description: string;
+                additionalProperties: boolean;
+            };
         };
     };
     required: string[];
