@@ -7,4 +7,4 @@ export declare function pascalCase(original: string): string;
 export declare function upperFirst(original: string): string;
 export declare function lowerFirst(original: string): string;
 export declare function addAdditionalProperties(target: GenericObject, source: GenericObject): void;
-export declare function serializeError(error: Error, includeStack?: boolean): GenericObject;
+export declare function serializeError(error: Error, omitStack?: boolean): GenericObject;

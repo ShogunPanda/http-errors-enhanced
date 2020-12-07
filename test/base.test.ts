@@ -7,7 +7,7 @@ import { createError, HttpError, isHttpError } from '../src'
 type Test = typeof t
 
 t.test('HttpError', (t: Test) => {
-  t.plan(4)
+  t.plan(5)
 
   t.test('it should create a basic error', (t: Test) => {
     t.plan(8)
@@ -75,6 +75,34 @@ t.test('HttpError', (t: Test) => {
     t.equal(new HttpError(800).status, 500)
     t.equal(new HttpError('OTHER').status, 500)
     t.false(new HttpError(200, { expose: 'NO' }).expose)
+  })
+
+  t.test('.serialize should correctly serialize the error', (t: Test) => {
+    t.plan(3)
+
+    const error = new HttpError(404, 'WHATEVER', { key1: 'value1' })
+    error.stack = '1\n2'
+
+    t.same(error.serialize(), {
+      statusCode: 404,
+      error: 'Not Found',
+      message: 'WHATEVER'
+    })
+
+    t.same(error.serialize(true), {
+      statusCode: 404,
+      error: 'Not Found',
+      message: 'WHATEVER',
+      key1: 'value1',
+      stack: ['2']
+    })
+
+    t.same(error.serialize(true, true), {
+      statusCode: 404,
+      error: 'Not Found',
+      message: 'WHATEVER',
+      key1: 'value1'
+    })
   })
 })
 

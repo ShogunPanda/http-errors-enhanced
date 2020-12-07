@@ -84,6 +84,12 @@ The returned instance is a descendant class of `Error` with the following base p
 - `isClientError`: This is set to `true` if the HTTP status class is 400.
 - `isServerError`: This is set to `true` if the HTTP status class is 500.
 
+Each instance has a `serialize(extended, omitStack)` function.
+
+If called without argument, it will return a object with the properties `statusCode`, `error` and `message` copied from the instance.
+
+If called with `extended` set to `true`, it will call `serializeError` (see below) on the instance.
+
 ### Named error classes
 
 For each known HTTP error, taken from Node.js [http.STATUS_CODES](https://nodejs.org/api/http.html#http_http_status_codes), there is an exported named class.
@@ -112,13 +118,15 @@ The function returns `true` if the value is an instance of `HttpError` or if the
 
 Copies all enumerable properties from `source` to `target`, skipping the ones which are already defined.
 
-### serializeError(val)
+### serializeError(val, [omitStack])
 
 The function extracts the `message`, `code` (or `name` if no code is present) and `stack` properties from an object (typically a descendant of `Error`).
 
 The extract properties are formatted and returned in a plain object containing `message` (string) and `stack` (array of strings) properties.
 
 The object also contains all the other properties of the original object.
+
+If `omitStack` is `true`, the `stack` property is omitted.
 
 ### Constants
 

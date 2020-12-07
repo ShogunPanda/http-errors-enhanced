@@ -34,14 +34,14 @@ export function addAdditionalProperties(target: GenericObject, source: GenericOb
   }
 }
 
-export function serializeError(error: Error, includeStack: boolean = true): GenericObject {
+export function serializeError(error: Error, omitStack: boolean = false): GenericObject {
   const tag = (error as NodeError).code ?? error.name ?? 'Error'
 
   const serialized: GenericObject = {
     message: `[${tag}] ${error.message}`
   }
 
-  if (includeStack) {
+  if (!omitStack) {
     serialized.stack = (error.stack ?? '')
       .split('\n')
       .slice(1)

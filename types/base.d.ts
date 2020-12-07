@@ -15,6 +15,7 @@ export declare class HttpError extends Error {
     isServerError: boolean;
     [key: string]: any;
     constructor(status: number | string, message?: string | GenericObject, properties?: GenericObject);
+    serialize(extended?: boolean, omitStack?: boolean): object;
 }
 export declare function createError(status: number | string, message?: string | GenericObject, properties?: GenericObject): HttpError;
 export declare function isHttpError(error: any): boolean;

@@ -1,5 +1,5 @@
 import { codesByIdentifier, identifierByCodes, messagesByCodes, phrasesByCodes } from './statuses'
-import { addAdditionalProperties, GenericObject, upperFirst } from './utils'
+import { addAdditionalProperties, GenericObject, serializeError, upperFirst } from './utils'
 
 export class HttpError extends Error {
   static standardErrorPrefix: string = 'HTTP_ERROR_'
@@ -79,6 +79,18 @@ export class HttpError extends Error {
       statusClass: { enumerable: false },
       expose: { enumerable: false }
     })
+  }
+
+  serialize(extended: boolean = false, omitStack: boolean = false): object {
+    if (!extended) {
+      return {
+        statusCode: this.statusCode,
+        error: this.error,
+        message: this.message
+      }
+    }
+
+    return { ...serializeError(this, omitStack), message: this.message }
   }
 }
 
