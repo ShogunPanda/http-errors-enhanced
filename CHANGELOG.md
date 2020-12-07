@@ -1,3 +1,7 @@
+### 2020-12-07 / 0.5.2
+
+- feat: Improve error serializing.
+
 ### 2020-12-07 / 0.5.1
 
 - fix: Allow omitting stack in serialized errors.
