@@ -1,3 +1,7 @@
+### 2020-12-07 / 0.5.1
+
+- fix: Allow omitting stack in serialized errors.
+
 ### 2020-12-07 / 0.5.0
 
 - feat: Fix errors property in 500 and 502 errors schema.
