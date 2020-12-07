@@ -1,3 +1,7 @@
+### 2020-12-07 / 0.5.0
+
+- feat: Fix errors property in 500 and 502 errors schema.
+
 ### 2020-12-05 / 0.4.3
 
 - fix: Fixed HTTP error JSON schema naming.
