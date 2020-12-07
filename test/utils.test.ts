@@ -22,7 +22,7 @@ t.test('upperFirst', (t: Test) => {
 })
 
 t.test('serializeError', (t: Test) => {
-  t.plan(5)
+  t.plan(6)
 
   class FooError extends Error {
     constructor(message: string) {
@@ -66,5 +66,9 @@ t.test('serializeError', (t: Test) => {
   t.match(serializeError(obj as any), {
     message: '[Error] MESSAGE',
     stack: [/Test\.<anonymous> \(\$ROOT\/test\/utils\.test\.ts:\d+:\d+\)/]
+  } as any)
+
+  t.match(serializeError(obj as any, false), {
+    message: '[Error] MESSAGE'
   } as any)
 })

@@ -34,12 +34,15 @@ export function addAdditionalProperties(target: GenericObject, source: GenericOb
   }
 }
 
-export function serializeError(error: Error): GenericObject {
+export function serializeError(error: Error, includeStack: boolean = true): GenericObject {
   const tag = (error as NodeError).code ?? error.name ?? 'Error'
 
   const serialized: GenericObject = {
-    message: `[${tag}] ${error.message}`,
-    stack: (error.stack ?? '')
+    message: `[${tag}] ${error.message}`
+  }
+
+  if (includeStack) {
+    serialized.stack = (error.stack ?? '')
       .split('\n')
       .slice(1)
       .map((s: string) => s.trim().replace(/^at /, '').replace(processRoot, '$ROOT'))
