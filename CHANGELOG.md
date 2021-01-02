@@ -1,3 +1,7 @@
+### 2021-01-02 / 0.6.0
+
+- chore: Updated dependencies, code and tools.
+
 ### 2020-12-07 / 0.5.2
 
 - feat: Improve error serializing.
