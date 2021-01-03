@@ -38,7 +38,7 @@
     "generate": "node -r ts-node/register/type-check generate.ts"
   },
   "devDependencies": {
-    "@cowtech/eslint-config": "^7.10.1",
+    "@cowtech/eslint-config": "^7.14.0",
     "@types/http-errors": "^1.8.0",
     "@types/node": "^14.14.19",
     "@types/prettier": "^2.1.6",
