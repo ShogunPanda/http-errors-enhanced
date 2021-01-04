@@ -1,3 +1,7 @@
+### 2021-01-04 / 0.7.0
+
+- feat: Export as ESM.
+
 ### 2021-01-03 / 0.6.1
 
 - chore: Updated linter config.
