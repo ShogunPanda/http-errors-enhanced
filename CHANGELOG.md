@@ -1,3 +1,8 @@
+### 2021-08-14 / 1.0.0-beta.0
+
+- feat: Only export as ESM.
+- chore: Fine tuned build script.
+
 ### 2021-01-04 / 0.7.0
 
 - feat: Export as ESM.
