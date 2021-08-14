@@ -44,13 +44,13 @@ t.test('serializeError', (t: Test) => {
 
   t.match(serializeError(errorWithCode), {
     message: '[CODE] MESSAGE',
-    stack: [/Test\.<anonymous> \(\$ROOT\/test\/utils\.test\.ts:\d+:\d+\)/],
+    stack: [/^(?:Test\.<anonymous> \((?:file:\/\/)?\$ROOT\/test\/utils\.test\.ts:\d+:\d+\))$/],
     additional: 1
   } as any)
 
   t.match(serializeError(errorWithName), {
     message: '[NAME] MESSAGE',
-    stack: [/Test\.<anonymous> \(\$ROOT\/test\/utils\.test\.ts:\d+:\d+\)/]
+    stack: [/^(?:Test\.<anonymous> \((?:file:\/\/)?\$ROOT\/test\/utils\.test\.ts:\d+:\d+\))$/]
   } as any)
 
   t.match(serializeError(fooError), {
@@ -60,12 +60,12 @@ t.test('serializeError', (t: Test) => {
 
   t.match(serializeError(regularError), {
     message: '[Error] MESSAGE',
-    stack: [/Test\.<anonymous> \(\$ROOT\/test\/utils\.test\.ts:\d+:\d+\)/]
+    stack: [/^(?:Test\.<anonymous> \((?:file:\/\/)?\$ROOT\/test\/utils\.test\.ts:\d+:\d+\))$/]
   } as any)
 
   t.match(serializeError(obj as any), {
     message: '[Error] MESSAGE',
-    stack: [/Test\.<anonymous> \(\$ROOT\/test\/utils\.test\.ts:\d+:\d+\)/]
+    stack: [/^(?:Test\.<anonymous> \((?:file:\/\/)?\$ROOT\/test\/utils\.test\.ts:\d+:\d+\))$/]
   } as any)
 
   t.match(serializeError(obj as any, false), {
