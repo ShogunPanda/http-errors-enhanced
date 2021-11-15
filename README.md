@@ -1,9 +1,9 @@
 # http-errors-enhanced
 
-[![Package Version](https://img.shields.io/npm/v/http-errors-enhanced.svg)](https://npm.im/http-errors-enhanced)
-[![Dependency Status](https://img.shields.io/david/ShogunPanda/http-errors-enhanced)](https://david-dm.org/ShogunPanda/http-errors-enhanced)
+[![Version](https://img.shields.io/npm/v/http-errors-enhanced.svg)](https://npm.im/http-errors-enhanced)
+[![Dependencies](https://img.shields.io/librariesio/release/npm/http-errors-enhanced)](https://libraries.io/npm/http-errors-enhanced)
 [![Build](https://github.com/ShogunPanda/http-errors-enhanced/workflows/CI/badge.svg)](https://github.com/ShogunPanda/http-errors-enhanced/actions?query=workflow%3ACI)
-[![Code Coverage](https://img.shields.io/codecov/c/gh/ShogunPanda/http-errors-enhanced?token=jxElZm8DEK)](https://codecov.io/gh/ShogunPanda/http-errors-enhanced)
+[![Coverage](https://img.shields.io/codecov/c/gh/ShogunPanda/http-errors-enhanced?token=jxElZm8DEK)](https://codecov.io/gh/ShogunPanda/http-errors-enhanced)
 
 Create HTTP errors with additional properties for any framework.
 
