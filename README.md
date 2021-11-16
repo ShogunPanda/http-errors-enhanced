@@ -213,6 +213,12 @@ console.log(JSON.stringify(notFoundErrorSchema))
 */
 ```
 
+## ESM Only
+
+This package only supports to be directly imported in a ESM context.
+
+For informations on how to use it in a CommonJS context, please check [this page](https://gist.github.com/ShogunPanda/fe98fd23d77cdfb918010dbc42f4504d).
+
 ## Credits
 
 This project has been heavily inspired by [http-errors](https://github.com/jshttp/http-errors), of which is a indipendent and unrelated project.
