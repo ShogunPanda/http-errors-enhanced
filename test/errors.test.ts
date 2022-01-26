@@ -2,52 +2,50 @@
 
 import t from 'tap'
 import {
-  BadRequestError,
-  UnauthorizedError,
-  PaymentRequiredError,
-  ForbiddenError,
-  NotFoundError,
-  MethodNotAllowedError,
-  NotAcceptableError,
-  ProxyAuthenticationRequiredError,
-  RequestTimeoutError,
-  ConflictError,
-  GoneError,
-  LengthRequiredError,
-  PreconditionFailedError,
-  PayloadTooLargeError,
-  URITooLongError,
-  UnsupportedMediaTypeError,
-  RangeNotSatisfiableError,
-  ExpectationFailedError,
-  ImaTeapotError,
-  MisdirectedRequestError,
-  UnprocessableEntityError,
-  LockedError,
-  FailedDependencyError,
-  TooEarlyError,
-  UpgradeRequiredError,
-  PreconditionRequiredError,
-  TooManyRequestsError,
-  RequestHeaderFieldsTooLargeError,
-  UnavailableForLegalReasonsError,
-  InternalServerError,
-  NotImplementedError,
   BadGatewayError,
-  ServiceUnavailableError,
-  GatewayTimeoutError,
-  HTTPVersionNotSupportedError,
-  VariantAlsoNegotiatesError,
-  InsufficientStorageError,
-  LoopDetectedError,
+  BadRequestError,
   BandwidthLimitExceededError,
+  ConflictError,
+  ExpectationFailedError,
+  FailedDependencyError,
+  ForbiddenError,
+  GatewayTimeoutError,
+  GoneError,
+  HTTPVersionNotSupportedError,
+  ImaTeapotError,
+  InsufficientStorageError,
+  InternalServerError,
+  LengthRequiredError,
+  LockedError,
+  LoopDetectedError,
+  MethodNotAllowedError,
+  MisdirectedRequestError,
+  NetworkAuthenticationRequiredError,
+  NotAcceptableError,
   NotExtendedError,
-  NetworkAuthenticationRequiredError
+  NotFoundError,
+  NotImplementedError,
+  PayloadTooLargeError,
+  PaymentRequiredError,
+  PreconditionFailedError,
+  PreconditionRequiredError,
+  ProxyAuthenticationRequiredError,
+  RangeNotSatisfiableError,
+  RequestHeaderFieldsTooLargeError,
+  RequestTimeoutError,
+  ServiceUnavailableError,
+  TooEarlyError,
+  TooManyRequestsError,
+  UnauthorizedError,
+  UnavailableForLegalReasonsError,
+  UnprocessableEntityError,
+  UnsupportedMediaTypeError,
+  UpgradeRequiredError,
+  URITooLongError,
+  VariantAlsoNegotiatesError
 } from '../src'
 
-type Test = typeof t
-
-t.test('BadRequestError', (t: Test) => {
+t.test('BadRequestError', t => {
   t.plan(14)
 
   const error = new BadRequestError('WHATEVER', { key1: 'prop1' })
@@ -69,7 +67,7 @@ t.test('BadRequestError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('UnauthorizedError', (t: Test) => {
+t.test('UnauthorizedError', t => {
   t.plan(14)
 
   const error = new UnauthorizedError('WHATEVER', { key1: 'prop1' })
@@ -91,7 +89,7 @@ t.test('UnauthorizedError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('PaymentRequiredError', (t: Test) => {
+t.test('PaymentRequiredError', t => {
   t.plan(14)
 
   const error = new PaymentRequiredError('WHATEVER', { key1: 'prop1' })
@@ -113,7 +111,7 @@ t.test('PaymentRequiredError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('ForbiddenError', (t: Test) => {
+t.test('ForbiddenError', t => {
   t.plan(14)
 
   const error = new ForbiddenError('WHATEVER', { key1: 'prop1' })
@@ -135,7 +133,7 @@ t.test('ForbiddenError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('NotFoundError', (t: Test) => {
+t.test('NotFoundError', t => {
   t.plan(14)
 
   const error = new NotFoundError('WHATEVER', { key1: 'prop1' })
@@ -157,7 +155,7 @@ t.test('NotFoundError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('MethodNotAllowedError', (t: Test) => {
+t.test('MethodNotAllowedError', t => {
   t.plan(14)
 
   const error = new MethodNotAllowedError('WHATEVER', { key1: 'prop1' })
@@ -179,7 +177,7 @@ t.test('MethodNotAllowedError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('NotAcceptableError', (t: Test) => {
+t.test('NotAcceptableError', t => {
   t.plan(14)
 
   const error = new NotAcceptableError('WHATEVER', { key1: 'prop1' })
@@ -201,7 +199,7 @@ t.test('NotAcceptableError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('ProxyAuthenticationRequiredError', (t: Test) => {
+t.test('ProxyAuthenticationRequiredError', t => {
   t.plan(14)
 
   const error = new ProxyAuthenticationRequiredError('WHATEVER', { key1: 'prop1' })
@@ -223,7 +221,7 @@ t.test('ProxyAuthenticationRequiredError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('RequestTimeoutError', (t: Test) => {
+t.test('RequestTimeoutError', t => {
   t.plan(14)
 
   const error = new RequestTimeoutError('WHATEVER', { key1: 'prop1' })
@@ -245,7 +243,7 @@ t.test('RequestTimeoutError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('ConflictError', (t: Test) => {
+t.test('ConflictError', t => {
   t.plan(14)
 
   const error = new ConflictError('WHATEVER', { key1: 'prop1' })
@@ -267,7 +265,7 @@ t.test('ConflictError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('GoneError', (t: Test) => {
+t.test('GoneError', t => {
   t.plan(14)
 
   const error = new GoneError('WHATEVER', { key1: 'prop1' })
@@ -289,7 +287,7 @@ t.test('GoneError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('LengthRequiredError', (t: Test) => {
+t.test('LengthRequiredError', t => {
   t.plan(14)
 
   const error = new LengthRequiredError('WHATEVER', { key1: 'prop1' })
@@ -311,7 +309,7 @@ t.test('LengthRequiredError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('PreconditionFailedError', (t: Test) => {
+t.test('PreconditionFailedError', t => {
   t.plan(14)
 
   const error = new PreconditionFailedError('WHATEVER', { key1: 'prop1' })
@@ -333,7 +331,7 @@ t.test('PreconditionFailedError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('PayloadTooLargeError', (t: Test) => {
+t.test('PayloadTooLargeError', t => {
   t.plan(14)
 
   const error = new PayloadTooLargeError('WHATEVER', { key1: 'prop1' })
@@ -355,7 +353,7 @@ t.test('PayloadTooLargeError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('URITooLongError', (t: Test) => {
+t.test('URITooLongError', t => {
   t.plan(14)
 
   const error = new URITooLongError('WHATEVER', { key1: 'prop1' })
@@ -377,7 +375,7 @@ t.test('URITooLongError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('UnsupportedMediaTypeError', (t: Test) => {
+t.test('UnsupportedMediaTypeError', t => {
   t.plan(14)
 
   const error = new UnsupportedMediaTypeError('WHATEVER', { key1: 'prop1' })
@@ -399,7 +397,7 @@ t.test('UnsupportedMediaTypeError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('RangeNotSatisfiableError', (t: Test) => {
+t.test('RangeNotSatisfiableError', t => {
   t.plan(14)
 
   const error = new RangeNotSatisfiableError('WHATEVER', { key1: 'prop1' })
@@ -421,7 +419,7 @@ t.test('RangeNotSatisfiableError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('ExpectationFailedError', (t: Test) => {
+t.test('ExpectationFailedError', t => {
   t.plan(14)
 
   const error = new ExpectationFailedError('WHATEVER', { key1: 'prop1' })
@@ -443,7 +441,7 @@ t.test('ExpectationFailedError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('ImaTeapotError', (t: Test) => {
+t.test('ImaTeapotError', t => {
   t.plan(14)
 
   const error = new ImaTeapotError('WHATEVER', { key1: 'prop1' })
@@ -465,7 +463,7 @@ t.test('ImaTeapotError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('MisdirectedRequestError', (t: Test) => {
+t.test('MisdirectedRequestError', t => {
   t.plan(14)
 
   const error = new MisdirectedRequestError('WHATEVER', { key1: 'prop1' })
@@ -487,7 +485,7 @@ t.test('MisdirectedRequestError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('UnprocessableEntityError', (t: Test) => {
+t.test('UnprocessableEntityError', t => {
   t.plan(14)
 
   const error = new UnprocessableEntityError('WHATEVER', { key1: 'prop1' })
@@ -509,7 +507,7 @@ t.test('UnprocessableEntityError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('LockedError', (t: Test) => {
+t.test('LockedError', t => {
   t.plan(14)
 
   const error = new LockedError('WHATEVER', { key1: 'prop1' })
@@ -531,7 +529,7 @@ t.test('LockedError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('FailedDependencyError', (t: Test) => {
+t.test('FailedDependencyError', t => {
   t.plan(14)
 
   const error = new FailedDependencyError('WHATEVER', { key1: 'prop1' })
@@ -553,7 +551,7 @@ t.test('FailedDependencyError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('TooEarlyError', (t: Test) => {
+t.test('TooEarlyError', t => {
   t.plan(14)
 
   const error = new TooEarlyError('WHATEVER', { key1: 'prop1' })
@@ -575,7 +573,7 @@ t.test('TooEarlyError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('UpgradeRequiredError', (t: Test) => {
+t.test('UpgradeRequiredError', t => {
   t.plan(14)
 
   const error = new UpgradeRequiredError('WHATEVER', { key1: 'prop1' })
@@ -597,7 +595,7 @@ t.test('UpgradeRequiredError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('PreconditionRequiredError', (t: Test) => {
+t.test('PreconditionRequiredError', t => {
   t.plan(14)
 
   const error = new PreconditionRequiredError('WHATEVER', { key1: 'prop1' })
@@ -619,7 +617,7 @@ t.test('PreconditionRequiredError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('TooManyRequestsError', (t: Test) => {
+t.test('TooManyRequestsError', t => {
   t.plan(14)
 
   const error = new TooManyRequestsError('WHATEVER', { key1: 'prop1' })
@@ -641,7 +639,7 @@ t.test('TooManyRequestsError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('RequestHeaderFieldsTooLargeError', (t: Test) => {
+t.test('RequestHeaderFieldsTooLargeError', t => {
   t.plan(14)
 
   const error = new RequestHeaderFieldsTooLargeError('WHATEVER', { key1: 'prop1' })
@@ -663,7 +661,7 @@ t.test('RequestHeaderFieldsTooLargeError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('UnavailableForLegalReasonsError', (t: Test) => {
+t.test('UnavailableForLegalReasonsError', t => {
   t.plan(14)
 
   const error = new UnavailableForLegalReasonsError('WHATEVER', { key1: 'prop1' })
@@ -685,7 +683,7 @@ t.test('UnavailableForLegalReasonsError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('InternalServerError', (t: Test) => {
+t.test('InternalServerError', t => {
   t.plan(14)
 
   const error = new InternalServerError('WHATEVER', { key1: 'prop1' })
@@ -707,7 +705,7 @@ t.test('InternalServerError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('NotImplementedError', (t: Test) => {
+t.test('NotImplementedError', t => {
   t.plan(14)
 
   const error = new NotImplementedError('WHATEVER', { key1: 'prop1' })
@@ -729,7 +727,7 @@ t.test('NotImplementedError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('BadGatewayError', (t: Test) => {
+t.test('BadGatewayError', t => {
   t.plan(14)
 
   const error = new BadGatewayError('WHATEVER', { key1: 'prop1' })
@@ -751,7 +749,7 @@ t.test('BadGatewayError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('ServiceUnavailableError', (t: Test) => {
+t.test('ServiceUnavailableError', t => {
   t.plan(14)
 
   const error = new ServiceUnavailableError('WHATEVER', { key1: 'prop1' })
@@ -773,7 +771,7 @@ t.test('ServiceUnavailableError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('GatewayTimeoutError', (t: Test) => {
+t.test('GatewayTimeoutError', t => {
   t.plan(14)
 
   const error = new GatewayTimeoutError('WHATEVER', { key1: 'prop1' })
@@ -795,7 +793,7 @@ t.test('GatewayTimeoutError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('HTTPVersionNotSupportedError', (t: Test) => {
+t.test('HTTPVersionNotSupportedError', t => {
   t.plan(14)
 
   const error = new HTTPVersionNotSupportedError('WHATEVER', { key1: 'prop1' })
@@ -817,7 +815,7 @@ t.test('HTTPVersionNotSupportedError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('VariantAlsoNegotiatesError', (t: Test) => {
+t.test('VariantAlsoNegotiatesError', t => {
   t.plan(14)
 
   const error = new VariantAlsoNegotiatesError('WHATEVER', { key1: 'prop1' })
@@ -839,7 +837,7 @@ t.test('VariantAlsoNegotiatesError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('InsufficientStorageError', (t: Test) => {
+t.test('InsufficientStorageError', t => {
   t.plan(14)
 
   const error = new InsufficientStorageError('WHATEVER', { key1: 'prop1' })
@@ -861,7 +859,7 @@ t.test('InsufficientStorageError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('LoopDetectedError', (t: Test) => {
+t.test('LoopDetectedError', t => {
   t.plan(14)
 
   const error = new LoopDetectedError('WHATEVER', { key1: 'prop1' })
@@ -883,7 +881,7 @@ t.test('LoopDetectedError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('BandwidthLimitExceededError', (t: Test) => {
+t.test('BandwidthLimitExceededError', t => {
   t.plan(14)
 
   const error = new BandwidthLimitExceededError('WHATEVER', { key1: 'prop1' })
@@ -905,7 +903,7 @@ t.test('BandwidthLimitExceededError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('NotExtendedError', (t: Test) => {
+t.test('NotExtendedError', t => {
   t.plan(14)
 
   const error = new NotExtendedError('WHATEVER', { key1: 'prop1' })
@@ -927,7 +925,7 @@ t.test('NotExtendedError', (t: Test) => {
   t.equal(error.key1, 'prop1')
 })
 
-t.test('NetworkAuthenticationRequiredError', (t: Test) => {
+t.test('NetworkAuthenticationRequiredError', t => {
   t.plan(14)
 
   const error = new NetworkAuthenticationRequiredError('WHATEVER', { key1: 'prop1' })

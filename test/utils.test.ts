@@ -4,24 +4,22 @@ import t from 'tap'
 import { addAdditionalProperties, serializeError } from '../src'
 import { lowerFirst, pascalCase, upperFirst } from '../src/utils'
 
-type Test = typeof t
-
-t.test('pascalCase', (t: Test) => {
+t.test('pascalCase', t => {
   t.plan(1)
   t.equal(pascalCase('a BcD EfG'), 'ABcdEfg')
 })
 
-t.test('lowerFirst', (t: Test) => {
+t.test('lowerFirst', t => {
   t.plan(1)
   t.equal(lowerFirst('a BcD EfG'), 'a BcD EfG')
 })
 
-t.test('upperFirst', (t: Test) => {
+t.test('upperFirst', t => {
   t.plan(1)
   t.equal(upperFirst('a BcD EfG'), 'A BcD EfG')
 })
 
-t.test('serializeError', (t: Test) => {
+t.test('serializeError', t => {
   t.plan(6)
 
   class FooError extends Error {

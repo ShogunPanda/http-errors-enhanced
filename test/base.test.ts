@@ -4,12 +4,10 @@ import createHttpError from 'http-errors'
 import t from 'tap'
 import { createError, HttpError, isHttpError } from '../src'
 
-type Test = typeof t
-
-t.test('HttpError', (t: Test) => {
+t.test('HttpError', t => {
   t.plan(5)
 
-  t.test('it should create a basic error', (t: Test) => {
+  t.test('it should create a basic error', t => {
     t.plan(8)
 
     const error = new HttpError(404, 'WHATEVER', { key1: 'value1' })
@@ -26,7 +24,7 @@ t.test('HttpError', (t: Test) => {
     t.is(otherError.code, 'HTTP_ERROR_570')
   })
 
-  t.test('it should assign derived properties', (t: Test) => {
+  t.test('it should assign derived properties', t => {
     t.plan(20)
 
     const clientError = new HttpError(404, 'WHATEVER', { key1: 'value1', headers: { a: 'b' } })
@@ -57,7 +55,7 @@ t.test('HttpError', (t: Test) => {
     t.same(otherError.headers, {})
   })
 
-  t.test('it should accept multiple invocations styles', (t: Test) => {
+  t.test('it should accept multiple invocations styles', t => {
     t.plan(4)
 
     const error = new HttpError('NotFound', { code: 'CODE', message: 'WHATEVER', key1: 'value1' })
@@ -68,7 +66,7 @@ t.test('HttpError', (t: Test) => {
     t.equal(error.key1, 'value1')
   })
 
-  t.test('it constrain number and expose to the expected format', (t: Test) => {
+  t.test('it constrain number and expose to the expected format', t => {
     t.plan(4)
 
     t.equal(new HttpError(200).status, 500)
@@ -77,7 +75,7 @@ t.test('HttpError', (t: Test) => {
     t.false(new HttpError(200, { expose: 'NO' }).expose)
   })
 
-  t.test('.serialize should correctly serialize the error', (t: Test) => {
+  t.test('.serialize should correctly serialize the error', t => {
     t.plan(3)
 
     const error = new HttpError(404, 'WHATEVER', { key1: 'value1' })
@@ -106,10 +104,10 @@ t.test('HttpError', (t: Test) => {
   })
 })
 
-t.test('createError', (t: Test) => {
+t.test('createError', t => {
   t.plan(1)
 
-  t.test('it should create an error', (t: Test) => {
+  t.test('it should create an error', t => {
     t.plan(7)
 
     const error = createError(404, 'WHATEVER', { key1: 'value1' })
@@ -126,10 +124,10 @@ t.test('createError', (t: Test) => {
   })
 })
 
-t.test('isHttpError', (t: Test) => {
+t.test('isHttpError', t => {
   t.plan(1)
 
-  t.test('it should correctly detect HTTP error duck typing', (t: Test) => {
+  t.test('it should correctly detect HTTP error duck typing', t => {
     t.plan(11)
 
     t.true(isHttpError(createError(404, 'WHATEVER', { key1: 'value1' })))

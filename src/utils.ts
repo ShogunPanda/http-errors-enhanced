@@ -10,7 +10,7 @@ export function pascalCase(original: string): string {
   const rest = original
     .slice(1)
     .toLowerCase()
-    .replace(/(\s+[a-z])/g, (_: string, char: string) => char.toUpperCase().trim())
+    .replace(/(\s+[a-z])/g, (_, char) => char.toUpperCase().trim())
 
   return original.slice(0, 1).toUpperCase() + rest
 }
@@ -45,7 +45,7 @@ export function serializeError(error: Error, omitStack: boolean = false): Generi
     serialized.stack = (error.stack ?? '')
       .split('\n')
       .slice(1)
-      .map((s: string) => s.trim().replace(/^at /, '').replace(processRoot, '$ROOT'))
+      .map(s => s.trim().replace(/^at /, '').replace(processRoot, '$ROOT'))
   }
 
   addAdditionalProperties(serialized, error)
