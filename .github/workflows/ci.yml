@@ -22,7 +22,7 @@ jobs:
           version: latest
           run_install: true
       - name: Run Tests
-        run: npm run ci
+        run: pnpm run ci
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
