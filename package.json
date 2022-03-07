@@ -41,7 +41,7 @@
     "postpublish": "git push origin && git push origin -f --tags"
   },
   "devDependencies": {
-    "@cowtech/eslint-config": "^8.4.0",
+    "@cowtech/eslint-config": "^8.6.1",
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.150",
     "@types/http-errors": "^1.8.2",
@@ -51,7 +51,7 @@
     "chokidar": "^3.5.3",
     "http-errors": "^2.0.0",
     "prettier": "^2.5.1",
-    "tap": "^15.2.3",
+    "tap": "^16.0.0",
     "ts-node": "^10.7.0",
     "typescript": "^4.6.2"
   },
