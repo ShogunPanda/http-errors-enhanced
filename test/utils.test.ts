@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
 import t from 'tap'
-import { addAdditionalProperties, serializeError } from '../src'
-import { lowerFirst, pascalCase, upperFirst } from '../src/utils'
+import { addAdditionalProperties, serializeError } from '../src/index.js'
+import { lowerFirst, pascalCase, upperFirst } from '../src/utils.js'
 
 t.test('pascalCase', t => {
   t.plan(1)
@@ -42,13 +42,13 @@ t.test('serializeError', t => {
 
   t.match(serializeError(errorWithCode), {
     message: '[CODE] MESSAGE',
-    stack: [/^(?:Test\.<anonymous> \((?:file:\/\/)?\$ROOT\/test\/utils\.test\.ts:\d+:\d+\))$/],
+    stack: [/^Test\.<anonymous> \((?:file:\/\/)?\$ROOT\/test\/utils\.test\.ts:\d+:\d+\)$/],
     additional: 1
   } as any)
 
   t.match(serializeError(errorWithName), {
     message: '[NAME] MESSAGE',
-    stack: [/^(?:Test\.<anonymous> \((?:file:\/\/)?\$ROOT\/test\/utils\.test\.ts:\d+:\d+\))$/]
+    stack: [/^Test\.<anonymous> \((?:file:\/\/)?\$ROOT\/test\/utils\.test\.ts:\d+:\d+\)$/]
   } as any)
 
   t.match(serializeError(fooError), {
@@ -58,12 +58,12 @@ t.test('serializeError', t => {
 
   t.match(serializeError(regularError), {
     message: '[Error] MESSAGE',
-    stack: [/^(?:Test\.<anonymous> \((?:file:\/\/)?\$ROOT\/test\/utils\.test\.ts:\d+:\d+\))$/]
+    stack: [/^Test\.<anonymous> \((?:file:\/\/)?\$ROOT\/test\/utils\.test\.ts:\d+:\d+\)$/]
   } as any)
 
   t.match(serializeError(obj as any), {
     message: '[Error] MESSAGE',
-    stack: [/^(?:Test\.<anonymous> \((?:file:\/\/)?\$ROOT\/test\/utils\.test\.ts:\d+:\d+\))$/]
+    stack: [/^Test\.<anonymous> \((?:file:\/\/)?\$ROOT\/test\/utils\.test\.ts:\d+:\d+\)$/]
   } as any)
 
   t.match(serializeError(obj as any, false), {

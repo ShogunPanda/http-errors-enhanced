@@ -43,7 +43,7 @@ import {
   UpgradeRequiredError,
   URITooLongError,
   VariantAlsoNegotiatesError
-} from '../src'
+} from '../src/index.js'
 
 t.test('BadRequestError', t => {
   t.plan(14)

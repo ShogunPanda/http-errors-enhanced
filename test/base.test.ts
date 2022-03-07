@@ -2,7 +2,7 @@
 
 import createHttpError from 'http-errors'
 import t from 'tap'
-import { createError, HttpError, isHttpError } from '../src'
+import { createError, HttpError, isHttpError } from '../src/index.js'
 
 t.test('HttpError', t => {
   t.plan(5)
