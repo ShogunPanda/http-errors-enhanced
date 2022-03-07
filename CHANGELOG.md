@@ -1,3 +1,9 @@
+### 2022-03-07 / 1.0.6
+
+- chore: Fix CI.
+- chore: Fix CI.
+- chore: Updated dependencies.
+
 ### 2022-03-07 / 1.0.5
 
 - chore: Updated build system.
