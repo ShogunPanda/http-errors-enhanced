@@ -41,19 +41,19 @@
     "postpublish": "git push origin && git push origin -f --tags"
   },
   "devDependencies": {
-    "@cowtech/eslint-config": "^8.6.1",
-    "@swc/cli": "^0.1.55",
-    "@swc/core": "^1.2.150",
+    "@cowtech/eslint-config": "^8.7.1",
+    "@swc/cli": "^0.1.57",
+    "@swc/core": "^1.2.244",
     "@types/http-errors": "^1.8.2",
-    "@types/node": "^17.0.21",
-    "@types/tap": "^15.0.6",
-    "c8": "^7.11.0",
+    "@types/node": "^18.7.13",
+    "@types/tap": "^15.0.7",
+    "c8": "^7.12.0",
     "chokidar": "^3.5.3",
     "http-errors": "^2.0.0",
-    "prettier": "^2.5.1",
-    "tap": "^16.0.0",
-    "ts-node": "^10.7.0",
-    "typescript": "^4.6.2"
+    "prettier": "^2.7.1",
+    "tap": "^16.3.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.2"
   },
   "engines": {
     "node": ">=14.15.0"
