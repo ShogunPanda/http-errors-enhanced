@@ -1,3 +1,8 @@
+### 2022-08-29 / 1.0.7
+
+- chore: Updated dependencies.
+- chore: Use sourcemaps with swc
+
 ### 2022-03-07 / 1.0.6
 
 - chore: Fix CI.
