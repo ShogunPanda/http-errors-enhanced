@@ -1,6 +1,6 @@
 export const badRequestSchema = {
   type: 'object',
-  $id: '#http-error-400',
+  $id: 'http-error-400',
   description: 'Error returned when the client payload is either invalid, malformed or has logical validation errors.',
   properties: {
     statusCode: { type: 'number', description: 'The error HTTP status code', enum: [400], example: 400 },
@@ -28,7 +28,7 @@ export const badRequestSchema = {
 
 export const unauthorizedSchema = {
   type: 'object',
-  $id: '#http-error-401',
+  $id: 'http-error-401',
   description: 'Error returned when client does not provide any valid authorization.',
   properties: {
     statusCode: { type: 'number', description: 'The error HTTP status code', enum: [401], example: 401 },
@@ -47,7 +47,7 @@ export const unauthorizedSchema = {
 
 export const forbiddenSchema = {
   type: 'object',
-  $id: '#http-error-403',
+  $id: 'http-error-403',
   description: 'Error returned when client is not authorized to access the requested resource.',
   properties: {
     statusCode: { type: 'number', description: 'The error HTTP status code', enum: [403], example: 403 },
@@ -66,7 +66,7 @@ export const forbiddenSchema = {
 
 export const notFoundSchema = {
   type: 'object',
-  $id: '#http-error-404',
+  $id: 'http-error-404',
   description: 'Error returned when the requested resource is not found.',
   properties: {
     statusCode: { type: 'number', description: 'The error HTTP status code', enum: [404], example: 404 },
@@ -85,7 +85,7 @@ export const notFoundSchema = {
 
 export const methodNotAllowedSchema = {
   type: 'object',
-  $id: '#http-error-405',
+  $id: 'http-error-405',
   description: 'Error returned when the requested method resource is not available.',
   properties: {
     statusCode: { type: 'number', description: 'The error HTTP status code', enum: [405], example: 405 },
@@ -104,7 +104,7 @@ export const methodNotAllowedSchema = {
 
 export const notAcceptableSchema = {
   type: 'object',
-  $id: '#http-error-406',
+  $id: 'http-error-406',
   description: 'Error returned when the server is not able to accept the request.',
   properties: {
     statusCode: { type: 'number', description: 'The error HTTP status code', enum: [406], example: 406 },
@@ -123,7 +123,7 @@ export const notAcceptableSchema = {
 
 export const conflictSchema = {
   type: 'object',
-  $id: '#http-error-409',
+  $id: 'http-error-409',
   description: 'Error returned when the requested resource already exists.',
   properties: {
     statusCode: { type: 'number', description: 'The error HTTP status code', enum: [409], example: 409 },
@@ -142,7 +142,7 @@ export const conflictSchema = {
 
 export const unsupportedMediaTypeSchema = {
   type: 'object',
-  $id: '#http-error-415',
+  $id: 'http-error-415',
   description: 'Error returned when the server is not able to accept the request media type.',
   properties: {
     statusCode: { type: 'number', description: 'The error HTTP status code', enum: [415], example: 415 },
@@ -166,7 +166,7 @@ export const unsupportedMediaTypeSchema = {
 
 export const internalServerErrorSchema = {
   type: 'object',
-  $id: '#http-error-500',
+  $id: 'http-error-500',
   description: 'Error returned when a unexpected error was thrown by the server.',
   properties: {
     statusCode: { type: 'number', description: 'The error HTTP status code', enum: [500], example: 500 },
@@ -197,7 +197,7 @@ export const internalServerErrorSchema = {
 
 export const badGatewaySchema = {
   type: 'object',
-  $id: '#http-error-502',
+  $id: 'http-error-502',
   description: 'Error returned when a unexpected error was thrown by a upstream server.',
   properties: {
     statusCode: { type: 'number', description: 'The error HTTP status code', enum: [502], example: 502 },
@@ -220,7 +220,7 @@ export const badGatewaySchema = {
 
 export const gatewayTimeoutSchema = {
   type: 'object',
-  $id: '#http-error-504',
+  $id: 'http-error-504',
   description: 'Error returned when a upstream server timed out.',
   properties: {
     statusCode: { type: 'number', description: 'The error HTTP status code', enum: [504], example: 504 },

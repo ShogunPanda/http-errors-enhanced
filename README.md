@@ -177,7 +177,7 @@ console.log(JSON.stringify(notFoundErrorSchema))
 /*
 => {
   "type": "object",
-  "$id": "#errors/404",
+  "$id": "errors/404",
   "description": "Error returned when the requested resource is not found.",
   "properties": {
     "statusCode": {

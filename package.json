@@ -38,7 +38,8 @@
     "test:ci": "c8 -c test/config/c8-ci.json tap --rcfile=test/config/tap.yml --no-color test/*.test.ts",
     "ci": "npm run build && npm run test:ci",
     "prepublishOnly": "npm run ci",
-    "postpublish": "git push origin && git push origin -f --tags"
+    "postpublish": "git push origin && git push origin -f --tags",
+    "generate": "node --loader=ts-node/esm ./generate.ts"
   },
   "devDependencies": {
     "@cowtech/eslint-config": "^8.7.2",
@@ -46,6 +47,7 @@
     "@swc/core": "^1.2.245",
     "@types/http-errors": "^1.8.2",
     "@types/node": "^18.7.14",
+    "@types/prettier": "^2.7.0",
     "@types/tap": "^15.0.7",
     "c8": "^7.12.0",
     "chokidar": "^3.5.3",

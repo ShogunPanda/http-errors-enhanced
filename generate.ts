@@ -1,12 +1,13 @@
-import { writeFileSync } from 'fs'
-import { STATUS_CODES } from 'http'
+import { writeFileSync } from 'node:fs'
+import { STATUS_CODES } from 'node:http'
+import { createRequire } from 'node:module'
 import { format } from 'prettier'
-import { lowerFirst, upperFirst } from './src/utils'
+import { lowerFirst, upperFirst } from './src/utils.js'
 
 function buildError(code: number, description: string, identifier: string, error: string, additional: object): string {
   const definition = {
     type: 'object',
-    $id: `#http-error-${code}`,
+    $id: `http-error-${code}`,
     description,
     properties: {
       statusCode: { type: 'number', description: 'The error HTTP status code', enum: [code], example: code },
@@ -27,8 +28,9 @@ function buildError(code: number, description: string, identifier: string, error
   return `export const ${lowerFirst(identifier)}Schema = ${JSON.stringify(definition)}`
 }
 
-function main() {
-  const prettierConfig = require('./prettier.config')
+function main(): void {
+  const require = createRequire(import.meta.url)
+  const prettierConfig = require('./prettier.config.cjs')
   const schemasDefinitions: { [key: string]: string | [string, object] } = {
     400: [
       'Error returned when the client payload is either invalid, malformed or has logical validation errors.',
@@ -90,32 +92,32 @@ function main() {
     504: 'Error returned when a upstream server timed out.'
   }
 
-  type Dictionary = { [key: string]: string | number }
+  type Dictionary = Record<string, string | number>
   const identifierByCodes: Dictionary = {}
   const codesByIdentifier: Dictionary = {}
   const messagesByCodes: Dictionary = {}
   const phrasesByCodes: Dictionary = {}
-  const statusCodes = []
-  const classes = []
-  const errorClasses = []
-  const classesTests = []
-  const schemas = []
+  const statusCodes: Array<string> = []
+  const classes: Array<string> = []
+  const errorClasses: Array<string> = []
+  const classesTests: Array<string> = []
+  const schemas: Array<string> = []
 
   // Iterate
   for (const [code, message] of Object.entries(STATUS_CODES as Dictionary)) {
-    const identifier = (message as string).replace(/[^\w]/g, '')
+    const identifier = (message as string).replace(/\W/g, '')
     const klass = identifier.replace(/Error$/, '') + 'Error'
     const phrase = upperFirst((message as string).toLowerCase()) + '.'
 
     identifierByCodes[code] = identifier
-    codesByIdentifier[identifier] = parseInt(code, 0)
+    codesByIdentifier[identifier] = Number.parseInt(code, 10)
     messagesByCodes[code] = message
     phrasesByCodes[code] = phrase
 
     const errorConstant = identifier.replace(/([a-z])([A-Z])/g, '$1_$2').toUpperCase()
     statusCodes.push(`export const ${errorConstant} = ${code}`)
 
-    if (code.match(/^[45]/)) {
+    if (/^[45]/.test(code)) {
       classes.push(
         `
           export class ${klass} extends HttpError {
@@ -137,7 +139,7 @@ function main() {
       errorClasses.push(`${klass}`)
       classesTests.push(
         `
-          t.test('${klass}', (t: Test) => {
+          t.test('${klass}', t => {
             t.plan(14)
 
             const error = new ${klass}('WHATEVER', {key1: 'prop1'})
@@ -170,7 +172,7 @@ function main() {
           description = description[0]
         }
 
-        schemas.push(buildError(parseInt(code, 0), description, identifier, message as string, additional))
+        schemas.push(buildError(Number.parseInt(code, 0), description, identifier, message as string, additional))
       }
     }
   }
@@ -179,14 +181,14 @@ function main() {
     'src/errors.ts',
     format(
       `
-        import { HttpError } from './base'
-        import {GenericObject} from './utils'
+        import { HttpError } from './base.js'
+        import {GenericObject} from './utils.js'
 
         ${classes.join('\n\n')}
       `.trim(),
       { parser: 'babel', ...prettierConfig }
     ),
-    'utf-8'
+    'utf8'
   )
 
   writeFileSync(
@@ -197,7 +199,7 @@ function main() {
       `.trim(),
       { parser: 'babel', ...prettierConfig }
     ),
-    'utf-8'
+    'utf8'
   )
 
   writeFileSync(
@@ -216,7 +218,7 @@ function main() {
       `.trim(),
       { parser: 'babel', ...prettierConfig }
     ),
-    'utf-8'
+    'utf8'
   )
 
   writeFileSync(
@@ -226,15 +228,15 @@ function main() {
         /* eslint-disable @typescript-eslint/no-floating-promises */
 
         import t from 'tap'
-        import { ${errorClasses.join(',')} } from '../src'
-        
-        type Test = typeof t
+        import { ${errorClasses
+          .sort((a: string, b: string) => a.toLowerCase().localeCompare(b.toLowerCase()))
+          .join(',')} } from '../src/index.js'
 
         ${classesTests.join('\n\n')}
       `.trim(),
       { parser: 'babel', ...prettierConfig }
     ),
-    'utf-8'
+    'utf8'
   )
 }
 
