@@ -1,3 +1,8 @@
+### 2022-08-31 / 1.0.9
+
+- fix: Use right ids.
+- chore: Updated compilation configuration.
+
 ### 2022-08-30 / 1.0.8
 
 - chore: Updated dependencies.
