@@ -1,3 +1,7 @@
+### 2022-10-12 / 1.0.10
+
+- fix: Updated types layout.
+
 ### 2022-08-31 / 1.0.9
 
 - fix: Use right ids.
