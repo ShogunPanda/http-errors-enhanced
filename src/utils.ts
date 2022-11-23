@@ -10,7 +10,7 @@ export function pascalCase(original: string): string {
   const rest = original
     .slice(1)
     .toLowerCase()
-    .replace(/(\s+[a-z])/g, (_, char) => char.toUpperCase().trim())
+    .replaceAll(/(\s+[a-z])/g, (_, char) => char.toUpperCase().trim())
 
   return original.slice(0, 1).toUpperCase() + rest
 }

@@ -49,7 +49,7 @@ export class HttpError extends Error {
     const code = identifierByCodes[this.status] || this.status.toString()
     this.name = 'HttpError'
     this.code =
-      properties.code || `${HttpError.standardErrorPrefix}${code.replace(/([a-z])([A-Z])/g, '$1_$2').toUpperCase()}`
+      properties.code || `${HttpError.standardErrorPrefix}${code.replaceAll(/([a-z])([A-Z])/g, '$1_$2').toUpperCase()}`
 
     // Assign helpers properties
     this.isClientError = this.status < 500
