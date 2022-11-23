@@ -1,3 +1,8 @@
+### 2022-11-23 / 1.0.13
+
+- chore: Updated dependencies.
+- fix: Fixed build script.
+
 ### 2022-10-12 / 1.0.12
 
 - chore: Updated dependencies.
