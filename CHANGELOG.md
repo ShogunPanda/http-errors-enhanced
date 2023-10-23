@@ -1,3 +1,11 @@
+### 2023-10-23 / 1.1.0
+
+- fix: Fixing build.
+- fix: Fixed tap upgrade.
+- chore: Updated dependencies.
+- chore: Fixed compilation.
+- chore: CI improvement
+
 ### 2022-11-23 / 1.0.13
 
 - chore: Updated dependencies.
