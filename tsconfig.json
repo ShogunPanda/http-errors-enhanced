@@ -15,7 +15,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "strictNullChecks": true,
-    "useUnknownInCatchVariables": false
+    "useUnknownInCatchVariables": false,
+    "incremental": true,
+    "tsBuildInfoFile": ".tsbuildinfo"
   },
-  "include": ["src/*.ts"]
+  "include": [
+    "src/*.ts"
+  ]
 }

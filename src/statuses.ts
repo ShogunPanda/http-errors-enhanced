@@ -1,4 +1,4 @@
-export const identifierByCodes: { [key: string]: string } = {
+export const identifierByCodes: Record<string, string> = {
   100: 'Continue',
   101: 'SwitchingProtocols',
   102: 'Processing',
@@ -64,7 +64,7 @@ export const identifierByCodes: { [key: string]: string } = {
   511: 'NetworkAuthenticationRequired'
 }
 
-export const codesByIdentifier: { [key: string]: number } = {
+export const codesByIdentifier: Record<string, number> = {
   Continue: 100,
   SwitchingProtocols: 101,
   Processing: 102,
@@ -130,7 +130,7 @@ export const codesByIdentifier: { [key: string]: number } = {
   NetworkAuthenticationRequired: 511
 }
 
-export const messagesByCodes: { [key: string]: string } = {
+export const messagesByCodes: Record<string, string> = {
   100: 'Continue',
   101: 'Switching Protocols',
   102: 'Processing',
@@ -196,7 +196,7 @@ export const messagesByCodes: { [key: string]: string } = {
   511: 'Network Authentication Required'
 }
 
-export const phrasesByCodes: { [key: string]: string } = {
+export const phrasesByCodes: Record<string, string> = {
   100: 'Continue.',
   101: 'Switching protocols.',
   102: 'Processing.',

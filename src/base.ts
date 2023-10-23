@@ -1,5 +1,5 @@
 import { codesByIdentifier, identifierByCodes, messagesByCodes, phrasesByCodes } from './statuses.js'
-import { addAdditionalProperties, GenericObject, serializeError, upperFirst } from './utils.js'
+import { addAdditionalProperties, serializeError, upperFirst, type GenericObject } from './utils.js'
 
 export class HttpError extends Error {
   static standardErrorPrefix: string = 'HTTP_ERROR_'
@@ -11,7 +11,7 @@ export class HttpError extends Error {
   error: string
   errorPhrase: string
   expose: boolean
-  headers: { [key: string]: string }
+  headers: Record<string, string>
   isClientError: boolean
   isServerError: boolean;
   [key: string]: any

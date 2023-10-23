@@ -1,6 +1,4 @@
-export interface GenericObject {
-  [key: string]: any
-}
+export type GenericObject = Record<string, any>
 
 export type NodeError = NodeJS.ErrnoException
 
