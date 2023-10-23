@@ -16,7 +16,7 @@
     "noUnusedParameters": true,
     "strictNullChecks": true,
     "useUnknownInCatchVariables": false,
-    "incremental": true,
+    "incremental": false,
     "tsBuildInfoFile": ".tsbuildinfo"
   },
   "include": [
