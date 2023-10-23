@@ -1,3 +1,7 @@
+### 2023-10-23 / 1.1.2
+
+- fix: Do not use incremental builds.
+
 ### 2023-10-23 / 1.1.1
 
 - fix: Do not use incremental builds.
