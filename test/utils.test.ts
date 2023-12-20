@@ -61,12 +61,12 @@ t.test('serializeError', t => {
     stack: [/^Test\.<anonymous> \((?:file:\/\/)?\$ROOT\/test\/utils\.test\.ts:\d+:\d+\)$/]
   } as any)
 
-  t.match(serializeError(obj as any), {
+  t.match(serializeError(obj as Error), {
     message: '[Error] MESSAGE',
     stack: [/^Test\.<anonymous> \((?:file:\/\/)?\$ROOT\/test\/utils\.test\.ts:\d+:\d+\)$/]
-  } as any)
+  })
 
-  t.match(serializeError(obj as any, false), {
+  t.match(serializeError(obj as Error, false), {
     message: '[Error] MESSAGE'
-  } as any)
+  })
 })

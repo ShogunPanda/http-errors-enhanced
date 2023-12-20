@@ -111,7 +111,7 @@ t.test('createError', t => {
     t.plan(7)
 
     const error = createError(404, 'WHATEVER', { key1: 'value1' })
-    const otherError = createError(404, 'WHATEVER', 'IGNORED' as any)
+    const otherError = createError(404, 'WHATEVER', { key: 'ignored' })
 
     t.type(error, HttpError)
     t.type(error, Error)
