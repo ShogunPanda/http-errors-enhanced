@@ -102,7 +102,7 @@ export function createError(
   return new HttpError(status, message, properties)
 }
 
-export function isHttpError(error: any): boolean {
+export function isHttpError(error: any): error is HttpError {
   if (typeof error !== 'object' || !error) {
     return false
   } else if (error instanceof HttpError) {
