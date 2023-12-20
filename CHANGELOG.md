@@ -1,3 +1,11 @@
+### 2023-12-20 / 2.0.0
+
+- chore: Updated dependencies.
+- feat: Merge pull request #3 from princemuel/main
+- feat: update isHttpError return type
+- chore: Changed TypeScript version.
+- chore: Removed outdated option.
+
 ### 2023-10-23 / 1.1.2
 
 - fix: Do not use incremental builds.
