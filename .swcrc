@@ -6,5 +6,9 @@
       "tsx": false,
       "dynamicImport": true
     }
+  },
+  "module": {
+    "type": "commonjs",
+    "importInterop": "node"
   }
 }
