@@ -1,3 +1,7 @@
+### 2024-01-24 / 2.0.3
+
+- fix: Downgrade @swc/cli.
+
 ### 2024-01-24 / 2.0.2
 
 - fix: Fixed package.json
