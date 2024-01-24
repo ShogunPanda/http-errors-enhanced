@@ -3,7 +3,10 @@
   "version": "2.0.1",
   "description": "Create HTTP errors with additional properties for any framework.",
   "homepage": "https://sw.cowtech.it/http-errors-enhanced",
-  "repository": "github:ShogunPanda/http-errors-enhanced",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShogunPanda/http-errors-enhanced.git"
+  },
   "keywords": [
     "http",
     "errors",
