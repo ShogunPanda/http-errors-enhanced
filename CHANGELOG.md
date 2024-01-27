@@ -1,3 +1,7 @@
+### 2024-01-27 / 2.0.4
+
+- chore: Updated dependencies.
+
 ### 2024-01-24 / 2.0.3
 
 - fix: Downgrade @swc/cli.
