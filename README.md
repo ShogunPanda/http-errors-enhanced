@@ -61,15 +61,15 @@ The main error class.
 
 The constructor signature is the following:
 
-```
-constructor(status, [message], [properties])
+```javascript
+constructor(status, message, properties)
 ```
 
 Where:
 
 - `status`: A HTTP status code as number or a identifier (like: `NotFound`). If the identifier is not valid or the number outside the validity range (`400 <= status <= 599`), it defaults to 500.
-- `message`: The error message.
-- `properties`: A list of additional properties to attach to the error. With the exception of `code`, `message`, `stack`, `expose` and `headers`, all properties that already exist in the object are ignored.
+- `message`: The error message. This is optional.
+- `properties`: A list of additional properties to attach to the error. With the exception of `code`, `message`, `stack`, `expose` and `headers`, all properties that already exist in the object are ignored. This is optional.
 
 The returned instance is a descendant class of `Error` with the following base properties, plus all the other properties specified in the constructor:
 
