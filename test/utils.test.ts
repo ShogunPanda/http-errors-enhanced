@@ -1,27 +1,37 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
-import t from 'tap'
+import { deepStrictEqual, match } from 'node:assert'
+import { test } from 'node:test'
 import { addAdditionalProperties, serializeError } from '../src/index.js'
-import { lowerFirst, pascalCase, upperFirst } from '../src/utils.js'
+import { lowerFirst, pascalCase, upperFirst, type GenericObject } from '../src/utils.js'
 
-t.test('pascalCase', t => {
-  t.plan(1)
-  t.equal(pascalCase('a BcD EfG'), 'ABcdEfg')
+function verifySerialization(actual: GenericObject, expected: GenericObject): void {
+  const actualStack: string[] = actual.stack ?? []
+  actual.stack = undefined
+
+  const expectedStack: RegExp[] = expected.stack ?? []
+  expected.stack = undefined
+
+  deepStrictEqual(actual, expected)
+
+  for (let i = 0; i < expectedStack.length; i++) {
+    match(actualStack[i], expectedStack[i])
+  }
+}
+
+test('pascalCase', () => {
+  deepStrictEqual(pascalCase('a BcD EfG'), 'ABcdEfg')
 })
 
-t.test('lowerFirst', t => {
-  t.plan(1)
-  t.equal(lowerFirst('a BcD EfG'), 'a BcD EfG')
+test('lowerFirst', () => {
+  deepStrictEqual(lowerFirst('a BcD EfG'), 'a BcD EfG')
 })
 
-t.test('upperFirst', t => {
-  t.plan(1)
-  t.equal(upperFirst('a BcD EfG'), 'A BcD EfG')
+test('upperFirst', () => {
+  deepStrictEqual(upperFirst('a BcD EfG'), 'A BcD EfG')
 })
 
-t.test('serializeError', t => {
-  t.plan(6)
-
+test('serializeError', () => {
   class FooError extends Error {
     constructor(message: string) {
       super(message)
@@ -40,33 +50,36 @@ t.test('serializeError', t => {
   errorWithName.name = 'NAME'
   fooError.stack = undefined
 
-  t.match(serializeError(errorWithCode), {
+  verifySerialization(serializeError(errorWithCode), {
+    code: 'CODE',
     message: '[CODE] MESSAGE',
-    stack: [/^Test\.<anonymous> \((?:file:\/\/)?\$ROOT\/test\/utils\.test\.ts:\d+:\d+\)$/],
+    stack: [/^TestContext\.<anonymous> \((?:file:\/\/)?\$ROOT\/test\/utils\.test\.ts:\d+:\d+\)$/],
     additional: 1
-  } as any)
-
-  t.match(serializeError(errorWithName), {
-    message: '[NAME] MESSAGE',
-    stack: [/^Test\.<anonymous> \((?:file:\/\/)?\$ROOT\/test\/utils\.test\.ts:\d+:\d+\)$/]
-  } as any)
-
-  t.match(serializeError(fooError), {
-    message: '[FooError] MESSAGE',
-    stack: []
-  } as any)
-
-  t.match(serializeError(regularError), {
-    message: '[Error] MESSAGE',
-    stack: [/^Test\.<anonymous> \((?:file:\/\/)?\$ROOT\/test\/utils\.test\.ts:\d+:\d+\)$/]
-  } as any)
-
-  t.match(serializeError(obj as Error), {
-    message: '[Error] MESSAGE',
-    stack: [/^Test\.<anonymous> \((?:file:\/\/)?\$ROOT\/test\/utils\.test\.ts:\d+:\d+\)$/]
   })
 
-  t.match(serializeError(obj as Error, false), {
+  verifySerialization(serializeError(errorWithName), {
+    name: 'NAME',
+    message: '[NAME] MESSAGE',
+    stack: [/^TestContext\.<anonymous> \((?:file:\/\/)?\$ROOT\/test\/utils\.test\.ts:\d+:\d+\)$/]
+  })
+
+  verifySerialization(serializeError(fooError), {
+    name: 'FooError',
+    message: '[FooError] MESSAGE',
+    stack: []
+  })
+
+  verifySerialization(serializeError(regularError), {
+    message: '[Error] MESSAGE',
+    stack: [/^TestContext\.<anonymous> \((?:file:\/\/)?\$ROOT\/test\/utils\.test\.ts:\d+:\d+\)$/]
+  })
+
+  verifySerialization(serializeError(obj as Error), {
+    message: '[Error] MESSAGE',
+    stack: [/^TestContext\.<anonymous> \((?:file:\/\/)?\$ROOT\/test\/utils\.test\.ts:\d+:\d+\)$/]
+  })
+
+  verifySerialization(serializeError(obj as Error, false), {
     message: '[Error] MESSAGE'
   })
 })

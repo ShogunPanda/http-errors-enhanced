@@ -139,26 +139,26 @@ function main(): void {
       errorClasses.push(`${klass}`)
       classesTests.push(
         `
-          t.test('${klass}', t => {
+          test('${klass}', () => {
             t.plan(14)
 
             const error = new ${klass}('WHATEVER', {key1: 'prop1'})
 
-            t.equal(${klass}.status, ${code})
-            t.equal(${klass}.error, '${identifier}')
-            t.equal(${klass}.message, "${message}")
-            t.equal(${klass}.phrase, "${phrase}")
+            deepStrictEqual(${klass}.status, ${code})
+            deepStrictEqual(${klass}.error, '${identifier}')
+            deepStrictEqual(${klass}.message, "${message}")
+            deepStrictEqual(${klass}.phrase, "${phrase}")
 
-            t.equal(error.status, ${code})
-            t.equal(error.message, 'WHATEVER')
-            t.equal(error.error, "${message}")
-            t.equal(error.errorPhrase, "${phrase}")
-            t.equal(error.code, "HTTP_ERROR_${errorConstant}")
-            t.equal(error.name, '${klass}')
-            t.${isClientError ? 'true' : 'false'}(error.isClientError)
-            t.${isClientError ? 'false' : 'true'}(error.isServerError)
-            t.${isClientError ? 'true' : 'false'}(error.expose)
-            t.equal(error.key1, 'prop1')
+            deepStrictEqual(error.status, ${code})
+            deepStrictEqual(error.message, 'WHATEVER')
+            deepStrictEqual(error.error, "${message}")
+            deepStrictEqual(error.errorPhrase, "${phrase}")
+            deepStrictEqual(error.code, "HTTP_ERROR_${errorConstant}")
+            deepStrictEqual(error.name, '${klass}')
+            ok(${isClientError ? '' : '!'}(error.isClientError)
+            ok(${isClientError ? '!' : ''}(error.isServerError)
+            ok(${isClientError ? '' : '!'}(error.expose)
+            deepStrictEqual(error.key1, 'prop1')
           })
         `
       )
@@ -227,7 +227,8 @@ function main(): void {
       `
         /* eslint-disable @typescript-eslint/no-floating-promises */
 
-        import t from 'tap'
+        import { deepStrictEqual, ok } from 'node:assert'
+        import { test } from 'node:test'
         import { ${errorClasses
           .sort((a: string, b: string) => a.toLowerCase().localeCompare(b.toLowerCase()))
           .join(',')} } from '../src/index.js'
