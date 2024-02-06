@@ -1,4 +1,4 @@
-import { writeFileSync } from 'node:fs'
+import { writeFile } from 'node:fs/promises'
 import { STATUS_CODES } from 'node:http'
 import { createRequire } from 'node:module'
 import { format } from 'prettier'
@@ -28,7 +28,7 @@ function buildError(code: number, description: string, identifier: string, error
   return `export const ${lowerFirst(identifier)}Schema = ${JSON.stringify(definition)}`
 }
 
-function main(): void {
+async function main(): Promise<void> {
   const require = createRequire(import.meta.url)
   const prettierConfig = require('./prettier.config.cjs')
   const schemasDefinitions: { [key: string]: string | [string, object] } = {
@@ -140,8 +140,6 @@ function main(): void {
       classesTests.push(
         `
           test('${klass}', () => {
-            t.plan(14)
-
             const error = new ${klass}('WHATEVER', {key1: 'prop1'})
 
             deepStrictEqual(${klass}.status, ${code})
@@ -155,9 +153,9 @@ function main(): void {
             deepStrictEqual(error.errorPhrase, "${phrase}")
             deepStrictEqual(error.code, "HTTP_ERROR_${errorConstant}")
             deepStrictEqual(error.name, '${klass}')
-            ok(${isClientError ? '' : '!'}(error.isClientError)
-            ok(${isClientError ? '!' : ''}(error.isServerError)
-            ok(${isClientError ? '' : '!'}(error.expose)
+            ok(${isClientError ? '' : '!'}error.isClientError)
+            ok(${isClientError ? '!' : ''}error.isServerError)
+            ok(${isClientError ? '' : '!'}error.expose)
             deepStrictEqual(error.key1, 'prop1')
           })
         `
@@ -177,53 +175,53 @@ function main(): void {
     }
   }
 
-  writeFileSync(
+  await writeFile(
     'src/errors.ts',
-    format(
+    await format(
       `
         import { HttpError } from './base.js'
-        import {GenericObject} from './utils.js'
+        import { type GenericObject } from './utils.js'
 
         ${classes.join('\n\n')}
       `.trim(),
-      { parser: 'babel', ...prettierConfig }
+      { parser: 'typescript', ...prettierConfig }
     ),
     'utf8'
   )
 
-  writeFileSync(
+  await writeFile(
     'src/schemas.ts',
-    format(
+    await format(
       `
         ${schemas.join('\n\n')}
       `.trim(),
-      { parser: 'babel', ...prettierConfig }
+      { parser: 'typescript', ...prettierConfig }
     ),
     'utf8'
   )
 
-  writeFileSync(
+  await writeFile(
     'src/statuses.ts',
-    format(
+    await format(
       `
-        export const identifierByCodes: { [key: string]: string } = ${JSON.stringify(identifierByCodes, null, 2)}
+        export const identifierByCodes: Record<string, string> = ${JSON.stringify(identifierByCodes, null, 2)}
 
-        export const codesByIdentifier: { [key: string]: number } = ${JSON.stringify(codesByIdentifier, null, 2)}
+        export const codesByIdentifier: Record<string, number> = ${JSON.stringify(codesByIdentifier, null, 2)}
 
-        export const messagesByCodes: { [key: string]: string } = ${JSON.stringify(messagesByCodes, null, 2)}
+        export const messagesByCodes: Record<string, string> = ${JSON.stringify(messagesByCodes, null, 2)}
 
-        export const phrasesByCodes: { [key: string]: string } = ${JSON.stringify(phrasesByCodes, null, 2)}
+        export const phrasesByCodes: Record<string, string> = ${JSON.stringify(phrasesByCodes, null, 2)}
 
         ${statusCodes.join('\n')}
       `.trim(),
-      { parser: 'babel', ...prettierConfig }
+      { parser: 'typescript', ...prettierConfig }
     ),
     'utf8'
   )
 
-  writeFileSync(
+  await writeFile(
     'test/errors.test.ts',
-    format(
+    await format(
       `
         /* eslint-disable @typescript-eslint/no-floating-promises */
 
@@ -235,7 +233,7 @@ function main(): void {
 
         ${classesTests.join('\n\n')}
       `.trim(),
-      { parser: 'babel', ...prettierConfig }
+      { parser: 'typescript', ...prettierConfig }
     ),
     'utf8'
   )

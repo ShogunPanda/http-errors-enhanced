@@ -37,12 +37,12 @@ import {
   ServiceUnavailableError,
   TooEarlyError,
   TooManyRequestsError,
-  URITooLongError,
   UnauthorizedError,
   UnavailableForLegalReasonsError,
   UnprocessableEntityError,
   UnsupportedMediaTypeError,
   UpgradeRequiredError,
+  URITooLongError,
   VariantAlsoNegotiatesError
 } from '../src/index.js'
 
