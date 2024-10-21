@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
-
 import createHttpError from 'http-errors'
 import { deepStrictEqual, ok } from 'node:assert'
 import { test } from 'node:test'
@@ -19,6 +17,18 @@ test('HttpError', async () => {
 
     ok(otherError instanceof HttpError)
     deepStrictEqual(otherError.code, 'HTTP_ERROR_570')
+  })
+
+  await test('it should support cause', () => {
+    const cause = new Error('WHATEVER')
+    const error = new HttpError(404, 'WHATEVER', { key1: 'value1', cause })
+
+    ok(error instanceof HttpError)
+    deepStrictEqual(error.message, 'WHATEVER')
+    deepStrictEqual(error.key1, 'value1')
+    deepStrictEqual(error.name, 'HttpError')
+    deepStrictEqual(error.code, 'HTTP_ERROR_NOT_FOUND')
+    deepStrictEqual(error.cause, cause)
   })
 
   await test('it should assign derived properties', () => {

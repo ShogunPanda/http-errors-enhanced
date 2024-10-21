@@ -37,8 +37,16 @@ export class HttpError extends Error {
       status = 500
     }
 
+    // Extract special properties for Error constructor
+    const errorOptions: ErrorOptions = {}
+    if (properties.cause) {
+      errorOptions.cause = properties.cause
+    }
+
+    // Create the error
+    super(message as string, errorOptions)
+
     // Assign basic properties
-    super(message as string)
     this.status = this.statusCode = status
     this.error = messagesByCodes[this.status]
     this.errorPhrase = phrasesByCodes[this.status]
