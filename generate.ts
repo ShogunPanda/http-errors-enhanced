@@ -97,11 +97,11 @@ async function main(): Promise<void> {
   const codesByIdentifier: Dictionary = {}
   const messagesByCodes: Dictionary = {}
   const phrasesByCodes: Dictionary = {}
-  const statusCodes: Array<string> = []
-  const classes: Array<string> = []
-  const errorClasses: Array<string> = []
-  const classesTests: Array<string> = []
-  const schemas: Array<string> = []
+  const statusCodes: string[] = []
+  const classes: string[] = []
+  const errorClasses: string[] = []
+  const classesTests: string[] = []
+  const schemas: string[] = []
 
   // Iterate
   for (const [code, message] of Object.entries(STATUS_CODES as Dictionary)) {

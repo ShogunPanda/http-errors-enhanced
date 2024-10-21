@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
-
 import { deepStrictEqual, match } from 'node:assert'
 import { test } from 'node:test'
 import { addAdditionalProperties, serializeError } from '../src/index.js'
