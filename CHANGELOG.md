@@ -1,3 +1,8 @@
+### 2024-12-22 / 3.0.1
+
+- fix: Removed invalid OpenAPI keywords.
+- chore: Fixed Node.js version in CI.
+
 ### 2024-10-21 / 3.0.0
 
 - feat: Support Error.cause. Fixes #6.
