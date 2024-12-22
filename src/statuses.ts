@@ -61,7 +61,7 @@ export const identifierByCodes: Record<string, string> = {
   508: 'LoopDetected',
   509: 'BandwidthLimitExceeded',
   510: 'NotExtended',
-  511: 'NetworkAuthenticationRequired'
+  511: 'NetworkAuthenticationRequired',
 }
 
 export const codesByIdentifier: Record<string, number> = {
@@ -127,7 +127,7 @@ export const codesByIdentifier: Record<string, number> = {
   LoopDetected: 508,
   BandwidthLimitExceeded: 509,
   NotExtended: 510,
-  NetworkAuthenticationRequired: 511
+  NetworkAuthenticationRequired: 511,
 }
 
 export const messagesByCodes: Record<string, string> = {
@@ -193,7 +193,7 @@ export const messagesByCodes: Record<string, string> = {
   508: 'Loop Detected',
   509: 'Bandwidth Limit Exceeded',
   510: 'Not Extended',
-  511: 'Network Authentication Required'
+  511: 'Network Authentication Required',
 }
 
 export const phrasesByCodes: Record<string, string> = {
@@ -259,7 +259,7 @@ export const phrasesByCodes: Record<string, string> = {
   508: 'Loop detected.',
   509: 'Bandwidth limit exceeded.',
   510: 'Not extended.',
-  511: 'Network authentication required.'
+  511: 'Network authentication required.',
 }
 
 export const CONTINUE = 100

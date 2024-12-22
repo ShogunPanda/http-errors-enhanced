@@ -10,15 +10,26 @@ function buildError(code: number, description: string, identifier: string, error
     $id: `http-error-${code}`,
     description,
     properties: {
-      statusCode: { type: 'number', description: 'The error HTTP status code', enum: [code], example: code },
-      error: { type: 'string', description: 'The error HTTP status description', enum: [error], example: error },
+      statusCode: {
+        type: 'number',
+        description: 'The error HTTP status code',
+        enum: [code]
+      },
+      error: {
+        type: 'string',
+        description: 'The error HTTP status description',
+        enum: [error]
+      },
       message: {
         type: 'string',
         description: 'The error message',
-        pattern: '.+',
-        example: `${error}.`
+        pattern: '.+'
       },
-      code: { type: 'string', description: 'The error code', enum: [error], example: error },
+      code: {
+        type: 'string',
+        description: 'The error code',
+        enum: [error]
+      },
       ...additional
     },
     required: ['statusCode', 'error', 'message'],
@@ -30,7 +41,7 @@ function buildError(code: number, description: string, identifier: string, error
 
 async function main(): Promise<void> {
   const require = createRequire(import.meta.url)
-  const prettierConfig = require('./prettier.config.cjs')
+  const prettierConfig = require('./prettier.config.js')
   const schemasDefinitions: { [key: string]: string | [string, object] } = {
     400: [
       'Error returned when the client payload is either invalid, malformed or has logical validation errors.',
@@ -60,7 +71,14 @@ async function main(): Promise<void> {
     500: [
       'Error returned when a unexpected error was thrown by the server.',
       {
-        stack: { type: 'array', items: { type: 'string', description: 'A call in the error stack.', pattern: '.+' } },
+        stack: {
+          type: 'array',
+          items: {
+            type: 'string',
+            description: 'A call in the error stack.',
+            pattern: '.+'
+          }
+        },
         errors: {
           type: 'array',
           items: {
@@ -125,7 +143,7 @@ async function main(): Promise<void> {
             static error: string = '${identifier}'
             static message: string = "${message}"
             static phrase: string = "${phrase}"
-          
+
             constructor(message?: string | GenericObject, properties?: GenericObject) {
               super(${code}, message, properties)
               this.name = '${klass}'
