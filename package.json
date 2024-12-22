@@ -1,6 +1,6 @@
 {
   "name": "http-errors-enhanced",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Create HTTP errors with additional properties for any framework.",
   "homepage": "https://sw.cowtech.it/http-errors-enhanced",
   "repository": {
