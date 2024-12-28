@@ -41,7 +41,7 @@ import {
   UnsupportedMediaTypeError,
   UpgradeRequiredError,
   URITooLongError,
-  VariantAlsoNegotiatesError,
+  VariantAlsoNegotiatesError
 } from '../src/index.js'
 
 test('BadRequestError', () => {
@@ -186,22 +186,13 @@ test('NotAcceptableError', () => {
 
 test('ProxyAuthenticationRequiredError', () => {
   const error = new ProxyAuthenticationRequiredError('WHATEVER', {
-    key1: 'prop1',
+    key1: 'prop1'
   })
 
   deepStrictEqual(ProxyAuthenticationRequiredError.status, 407)
-  deepStrictEqual(
-    ProxyAuthenticationRequiredError.error,
-    'ProxyAuthenticationRequired'
-  )
-  deepStrictEqual(
-    ProxyAuthenticationRequiredError.message,
-    'Proxy Authentication Required'
-  )
-  deepStrictEqual(
-    ProxyAuthenticationRequiredError.phrase,
-    'Proxy authentication required.'
-  )
+  deepStrictEqual(ProxyAuthenticationRequiredError.error, 'ProxyAuthenticationRequired')
+  deepStrictEqual(ProxyAuthenticationRequiredError.message, 'Proxy Authentication Required')
+  deepStrictEqual(ProxyAuthenticationRequiredError.phrase, 'Proxy authentication required.')
 
   deepStrictEqual(error.status, 407)
   deepStrictEqual(error.message, 'WHATEVER')
@@ -597,22 +588,13 @@ test('TooManyRequestsError', () => {
 
 test('RequestHeaderFieldsTooLargeError', () => {
   const error = new RequestHeaderFieldsTooLargeError('WHATEVER', {
-    key1: 'prop1',
+    key1: 'prop1'
   })
 
   deepStrictEqual(RequestHeaderFieldsTooLargeError.status, 431)
-  deepStrictEqual(
-    RequestHeaderFieldsTooLargeError.error,
-    'RequestHeaderFieldsTooLarge'
-  )
-  deepStrictEqual(
-    RequestHeaderFieldsTooLargeError.message,
-    'Request Header Fields Too Large'
-  )
-  deepStrictEqual(
-    RequestHeaderFieldsTooLargeError.phrase,
-    'Request header fields too large.'
-  )
+  deepStrictEqual(RequestHeaderFieldsTooLargeError.error, 'RequestHeaderFieldsTooLarge')
+  deepStrictEqual(RequestHeaderFieldsTooLargeError.message, 'Request Header Fields Too Large')
+  deepStrictEqual(RequestHeaderFieldsTooLargeError.phrase, 'Request header fields too large.')
 
   deepStrictEqual(error.status, 431)
   deepStrictEqual(error.message, 'WHATEVER')
@@ -628,22 +610,13 @@ test('RequestHeaderFieldsTooLargeError', () => {
 
 test('UnavailableForLegalReasonsError', () => {
   const error = new UnavailableForLegalReasonsError('WHATEVER', {
-    key1: 'prop1',
+    key1: 'prop1'
   })
 
   deepStrictEqual(UnavailableForLegalReasonsError.status, 451)
-  deepStrictEqual(
-    UnavailableForLegalReasonsError.error,
-    'UnavailableForLegalReasons'
-  )
-  deepStrictEqual(
-    UnavailableForLegalReasonsError.message,
-    'Unavailable For Legal Reasons'
-  )
-  deepStrictEqual(
-    UnavailableForLegalReasonsError.phrase,
-    'Unavailable for legal reasons.'
-  )
+  deepStrictEqual(UnavailableForLegalReasonsError.error, 'UnavailableForLegalReasons')
+  deepStrictEqual(UnavailableForLegalReasonsError.message, 'Unavailable For Legal Reasons')
+  deepStrictEqual(UnavailableForLegalReasonsError.phrase, 'Unavailable for legal reasons.')
 
   deepStrictEqual(error.status, 451)
   deepStrictEqual(error.message, 'WHATEVER')
@@ -761,18 +734,9 @@ test('HTTPVersionNotSupportedError', () => {
   const error = new HTTPVersionNotSupportedError('WHATEVER', { key1: 'prop1' })
 
   deepStrictEqual(HTTPVersionNotSupportedError.status, 505)
-  deepStrictEqual(
-    HTTPVersionNotSupportedError.error,
-    'HTTPVersionNotSupported'
-  )
-  deepStrictEqual(
-    HTTPVersionNotSupportedError.message,
-    'HTTP Version Not Supported'
-  )
-  deepStrictEqual(
-    HTTPVersionNotSupportedError.phrase,
-    'Http version not supported.'
-  )
+  deepStrictEqual(HTTPVersionNotSupportedError.error, 'HTTPVersionNotSupported')
+  deepStrictEqual(HTTPVersionNotSupportedError.message, 'HTTP Version Not Supported')
+  deepStrictEqual(HTTPVersionNotSupportedError.phrase, 'Http version not supported.')
 
   deepStrictEqual(error.status, 505)
   deepStrictEqual(error.message, 'WHATEVER')
@@ -791,14 +755,8 @@ test('VariantAlsoNegotiatesError', () => {
 
   deepStrictEqual(VariantAlsoNegotiatesError.status, 506)
   deepStrictEqual(VariantAlsoNegotiatesError.error, 'VariantAlsoNegotiates')
-  deepStrictEqual(
-    VariantAlsoNegotiatesError.message,
-    'Variant Also Negotiates'
-  )
-  deepStrictEqual(
-    VariantAlsoNegotiatesError.phrase,
-    'Variant also negotiates.'
-  )
+  deepStrictEqual(VariantAlsoNegotiatesError.message, 'Variant Also Negotiates')
+  deepStrictEqual(VariantAlsoNegotiatesError.phrase, 'Variant also negotiates.')
 
   deepStrictEqual(error.status, 506)
   deepStrictEqual(error.message, 'WHATEVER')
@@ -857,14 +815,8 @@ test('BandwidthLimitExceededError', () => {
 
   deepStrictEqual(BandwidthLimitExceededError.status, 509)
   deepStrictEqual(BandwidthLimitExceededError.error, 'BandwidthLimitExceeded')
-  deepStrictEqual(
-    BandwidthLimitExceededError.message,
-    'Bandwidth Limit Exceeded'
-  )
-  deepStrictEqual(
-    BandwidthLimitExceededError.phrase,
-    'Bandwidth limit exceeded.'
-  )
+  deepStrictEqual(BandwidthLimitExceededError.message, 'Bandwidth Limit Exceeded')
+  deepStrictEqual(BandwidthLimitExceededError.phrase, 'Bandwidth limit exceeded.')
 
   deepStrictEqual(error.status, 509)
   deepStrictEqual(error.message, 'WHATEVER')
@@ -900,22 +852,13 @@ test('NotExtendedError', () => {
 
 test('NetworkAuthenticationRequiredError', () => {
   const error = new NetworkAuthenticationRequiredError('WHATEVER', {
-    key1: 'prop1',
+    key1: 'prop1'
   })
 
   deepStrictEqual(NetworkAuthenticationRequiredError.status, 511)
-  deepStrictEqual(
-    NetworkAuthenticationRequiredError.error,
-    'NetworkAuthenticationRequired'
-  )
-  deepStrictEqual(
-    NetworkAuthenticationRequiredError.message,
-    'Network Authentication Required'
-  )
-  deepStrictEqual(
-    NetworkAuthenticationRequiredError.phrase,
-    'Network authentication required.'
-  )
+  deepStrictEqual(NetworkAuthenticationRequiredError.error, 'NetworkAuthenticationRequired')
+  deepStrictEqual(NetworkAuthenticationRequiredError.message, 'Network Authentication Required')
+  deepStrictEqual(NetworkAuthenticationRequiredError.phrase, 'Network authentication required.')
 
   deepStrictEqual(error.status, 511)
   deepStrictEqual(error.message, 'WHATEVER')
