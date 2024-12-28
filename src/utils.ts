@@ -5,31 +5,25 @@ export type NodeError = NodeJS.ErrnoException
 const processRoot = process.cwd()
 
 export function pascalCase(original: string): string {
-  const rest = original
-    .slice(1)
-    .toLowerCase()
-    .replaceAll(/(\s+[a-z])/g, (_, char) => char.toUpperCase().trim())
-
-  return original.slice(0, 1).toUpperCase() + rest
+  return original
+    .split(/[\s_-]+/)
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join('')
 }
 
 export function upperFirst(original: string): string {
-  return original.slice(0, 1).toUpperCase() + original.slice(1)
+  return original.charAt(0).toUpperCase() + original.slice(1)
 }
 
 export function lowerFirst(original: string): string {
-  return original.slice(0, 1).toLowerCase() + original.slice(1)
+  return original.charAt(0).toLowerCase() + original.slice(1)
 }
 
 export function addAdditionalProperties(target: GenericObject, source: GenericObject): void {
-  for (const v in source) {
-    if (v in target) {
-      // Do not allow any overwriting here
-      continue
-    }
-
-    target[v] = source[v]
-  }
+  const keyValArr = Object.entries(source)
+  const missingKeysArr = keyValArr.filter(([key]) => !(key in target))
+  const notInTarget = Object.fromEntries(missingKeysArr)
+  Object.assign(target, notInTarget)
 }
 
 export function serializeError(error: Error, omitStack: boolean = false): GenericObject {
