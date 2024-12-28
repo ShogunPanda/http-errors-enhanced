@@ -1,3 +1,7 @@
+### 2024-12-28 / 3.0.2
+
+- chore: Updated dependencies.
+
 ### 2024-12-22 / 3.0.1
 
 - fix: Removed invalid OpenAPI keywords.
