@@ -19,6 +19,14 @@ test('HttpError', async () => {
     deepStrictEqual(otherError.code, 'HTTP_ERROR_570')
   })
 
+  await test('it should use a default message', () => {
+    const error = new HttpError(404)
+    const otherError = new HttpError(404, { key1: 'value1' })
+
+    deepStrictEqual(error.message, 'Not Found')
+    deepStrictEqual(otherError.message, 'Not Found')
+  })
+
   await test('it should support cause', () => {
     const cause = new Error('WHATEVER')
     const error = new HttpError(404, 'WHATEVER', { key1: 'value1', cause })
