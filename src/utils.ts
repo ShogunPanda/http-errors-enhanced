@@ -4,11 +4,12 @@ export type GenericObject = Record<string, any>
 
 export type NodeError = NodeJS.ErrnoException
 
-let processRoot = process.cwd()
+const processRoot = process.cwd()
+let fileProcessRoot = `file://${processRoot}`
 
 /* c8 ignore next 3 - Windows specific */
 if (process.platform === 'win32') {
-  processRoot = '/' + process.cwd().replaceAll(sep, '/')
+  fileProcessRoot = 'file:///' + process.cwd().replaceAll(sep, '/')
 }
 
 export function pascalCase(original: string): string {
@@ -50,7 +51,15 @@ export function serializeError(error: Error, omitStack: boolean = false): Generi
     serialized.stack = (error.stack ?? '')
       .split('\n')
       .slice(1)
-      .map(s => s.trim().replace(/^at /, '').replace(processRoot, '$ROOT'))
+      .map(s =>
+        s
+          .trim()
+          .replace(/^at /, '')
+          .replace(/^at /, '')
+          .replace(fileProcessRoot, 'file://$ROOT')
+          .replace(processRoot, '$ROOT')
+          .replaceAll(sep, '/')
+      )
   }
 
   addAdditionalProperties(serialized, error)
