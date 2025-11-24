@@ -1,3 +1,7 @@
+### 2025-11-24 / 4.0.1
+
+- fix: Fixed path normalization in Windows.
+
 ### 2025-11-24 / 4.0.0
 
 - chore: Updated dependencies.
