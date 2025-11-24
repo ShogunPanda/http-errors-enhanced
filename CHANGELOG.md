@@ -1,3 +1,8 @@
+### 2025-11-24 / 4.0.0
+
+- chore: Updated dependencies.
+- feat!: Dropped support for Node 20.
+
 ### 2024-12-28 / 3.0.2
 
 - chore: Updated dependencies.
