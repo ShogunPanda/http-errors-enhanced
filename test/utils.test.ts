@@ -1,7 +1,7 @@
 import { deepStrictEqual, match } from 'node:assert'
 import { test } from 'node:test'
-import { addAdditionalProperties, serializeError } from '../src/index.js'
-import { lowerFirst, pascalCase, upperFirst, type GenericObject } from '../src/utils.js'
+import { addAdditionalProperties, serializeError } from '../src/index.ts'
+import { lowerFirst, pascalCase, upperFirst, type GenericObject } from '../src/utils.ts'
 
 function verifySerialization(actual: GenericObject, expected: GenericObject): void {
   const actualStack: string[] = actual.stack ?? []

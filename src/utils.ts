@@ -1,8 +1,15 @@
+import { sep } from 'node:path'
+
 export type GenericObject = Record<string, any>
 
 export type NodeError = NodeJS.ErrnoException
 
-const processRoot = process.cwd()
+let processRoot = process.cwd()
+
+/* c8 ignore next 3 - Windows specific */
+if (process.platform === 'win32') {
+  processRoot = '/' + process.cwd().replaceAll(sep, '/')
+}
 
 export function pascalCase(original: string): string {
   const rest = original

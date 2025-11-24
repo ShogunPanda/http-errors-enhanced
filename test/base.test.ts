@@ -1,7 +1,7 @@
 import createHttpError from 'http-errors'
 import { deepStrictEqual, ok } from 'node:assert'
 import { test } from 'node:test'
-import { HttpError, createError, isHttpError } from '../src/index.js'
+import { HttpError, createError, isHttpError } from '../src/index.ts'
 
 test('HttpError', async () => {
   await test('it should create a basic error', () => {

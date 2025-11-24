@@ -42,7 +42,7 @@ import {
   UpgradeRequiredError,
   URITooLongError,
   VariantAlsoNegotiatesError
-} from '../src/index.js'
+} from '../src/index.ts'
 
 test('BadRequestError', () => {
   const error = new BadRequestError('WHATEVER', { key1: 'prop1' })

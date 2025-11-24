@@ -1,5 +1,5 @@
-import { codesByIdentifier, identifierByCodes, messagesByCodes, phrasesByCodes } from './statuses.js'
-import { addAdditionalProperties, serializeError, upperFirst, type GenericObject } from './utils.js'
+import { codesByIdentifier, identifierByCodes, messagesByCodes, phrasesByCodes } from './statuses.ts'
+import { addAdditionalProperties, serializeError, upperFirst, type GenericObject } from './utils.ts'
 
 export class HttpError extends Error {
   static standardErrorPrefix: string = 'HTTP_ERROR_'

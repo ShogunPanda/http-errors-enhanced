@@ -2,7 +2,7 @@ import { writeFile } from 'node:fs/promises'
 import { STATUS_CODES } from 'node:http'
 import { createRequire } from 'node:module'
 import { format } from 'prettier'
-import { lowerFirst, upperFirst } from './src/utils.js'
+import { lowerFirst, upperFirst } from './src/utils.ts'
 
 function buildError(code: number, description: string, identifier: string, error: string, additional: object): string {
   const definition = {
@@ -197,8 +197,8 @@ async function main(): Promise<void> {
     'src/errors.ts',
     await format(
       `
-        import { HttpError } from './base.js'
-        import { type GenericObject } from './utils.js'
+        import { HttpError } from './base.ts'
+        import { type GenericObject } from './utils.ts'
 
         ${classes.join('\n\n')}
       `.trim(),
