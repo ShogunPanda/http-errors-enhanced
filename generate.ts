@@ -197,8 +197,8 @@ async function main(): Promise<void> {
     'src/errors.ts',
     await format(
       `
+        import type { GenericObject } from './utils.ts'
         import { HttpError } from './base.ts'
-        import { type GenericObject } from './utils.ts'
 
         ${classes.join('\n\n')}
       `.trim(),

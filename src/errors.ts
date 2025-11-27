@@ -1,5 +1,5 @@
+import type { GenericObject } from './utils.ts'
 import { HttpError } from './base.ts'
-import { type GenericObject } from './utils.ts'
 
 export class BadRequestError extends HttpError {
   static status: number = 400
