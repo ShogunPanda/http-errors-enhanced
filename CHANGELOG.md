@@ -1,3 +1,7 @@
+### 2025-11-27 / 4.0.2
+
+- fix: Correctly sort type only imports.
+
 ### 2025-11-24 / 4.0.1
 
 - fix: Fixed path normalization in Windows.
