@@ -18,9 +18,9 @@ export class HttpError extends Error {
 
   constructor(status: number | string, message?: string | GenericObject, properties?: GenericObject) {
     // Normalize arguments
-    if (typeof message === 'object') {
+    if (typeof message === 'object' && message !== null) {
       properties = message
-      message = properties.message || ''
+      message = properties.message
     }
 
     if (!properties) {
@@ -35,6 +35,11 @@ export class HttpError extends Error {
     // Constraint status to be a valid HTTP error
     if (typeof status !== 'number' || status < 400 || status > 599) {
       status = 500
+    }
+
+    // Add default message if none provided
+    if (typeof message !== 'string') {
+      message = messagesByCodes[status] || ''
     }
 
     // Extract special properties for Error constructor
